@@ -7,11 +7,11 @@ Note that you don't necessarily need any coding in your mod, although some advan
 ## What you can mod
 - Add a translation (No code involved)
 - Add new contents (Some involves code)
-    - Supports Units/Treasures/Talents/Events
-    - Translate descriptions to different languages, or skip for one single language.
+    - Units/Treasures/Talents/Events.
+    - Translate descriptions to different languages.
     - Use an existing ability or create your own.
-    - Use images on Treasures/Talents/Units.
-    - Use animations on Units.
+    - Create images for your units, or use an existing one.
+    - Add animations to your Units.
     - Modify existing content.
 - Modify game logic (Involves code)
 
@@ -95,7 +95,7 @@ Start your mod by placing `mod.json` in `Dev`, or a subdirectory of it. This fil
 If multiple mods with the same modID are detected, only the first is used. Note that dev mods are always loaded first. So if you have a same steam mod, they will be replaced by their dev version.
 
 ## Testing your mod
-There are tools that help you debug your mods, like BepInEx or UnityExplorer. They are available in Github.
+There are tools that help you debug your mods, like [BepInEx](https://github.com/BepInEx/BepInEx) or [UnityExplorer](https://github.com/sinai-dev/UnityExplorer). They are available in Github.
 
 ## Publish your mod
 To-be-implemented
