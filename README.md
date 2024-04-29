@@ -1,5 +1,5 @@
 # Lonestar-Mod-Guide
-Modding guide for [Lonestar](https://store.steampowered.com/app/2056210/_/).
+Modding guide for Lonestar ([Steam Link](https://store.steampowered.com/app/2056210/_/), [Discord Link](https://discord.gg/QH4xj9pY)).
 
 Articles:
 

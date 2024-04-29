@@ -16,7 +16,7 @@ Note that you don't necessarily need any coding in your mod, although some advan
 - Modify game logic (Involves code)
 
 ## Disassemble the game (Optional)
-If your mod involves code, you may need to disassemble the game first. There are tools that help you do this job. You can get game assets with `AssetRipper` ([Link](https://github.com/AssetRipper/AssetRipper)) and view code with `Dnspy` ([Link](https://github.com/dnSpy/dnSpy)).
+If your mod involves code, you may need to disassemble the game first. There are tools that help you do this job. You can get game assets with AssetRipper ([Link](https://github.com/AssetRipper/AssetRipper)) and view code with Dnspy ([Link](https://github.com/dnSpy/dnSpy)).
 
 In AssetRipper: File > Open Folder > Select `LONESTAR` directory (Find the path in Steam, as shown in the picture below)
 
@@ -38,7 +38,7 @@ Some folders that may help in your make your mod:
 
 In Dnspy: File > Open > Open `LONESTAR/LONESTAR_Data/Managed/Assembly-CSharp.dll` (`LONESTAR` folder can be found in Steam as shown in the above picture)
 
-Dnspy don't extract assets of the game, but it supports code searching and game logic modifications, which helps a lot in understanding code mechanics.
+Dnspy won't extract game assets, but it supports code searching and game logic modifications, which helps a lot in understanding code mechanics.
 
 
 ## Mod Structure
