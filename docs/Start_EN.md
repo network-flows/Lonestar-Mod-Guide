@@ -1,11 +1,11 @@
 # Getting Started
 
-This page tells you the file structure of your mod, and introduces the tools you may need to design your mod. A template mod can be found in `TutorialMod`.
+This page tells you the file structure of your mod, and introduces the tools you may need to create your mod. A template mod can be found in `TutorialMod`.
 
 Note that you don't necessarily need any coding in your mod, although some advanced features are only possible if you have C# knowledge. 
 
 ## What you can mod
-- Add a translation (No code involved)
+- Add a new language and its translations (No code involved)
 - Add new contents (Some involves code)
     - Units/Treasures/Talents/Events.
     - Translate descriptions to different languages.
@@ -16,7 +16,7 @@ Note that you don't necessarily need any coding in your mod, although some advan
 - Modify game logic (Involves code)
 
 ## Disassemble the game (Optional)
-There are tools that help you disassemble the game. You can get game assets with `AssetRipper` and view code with `Dnspy`.
+If your mod involves code, you may need to disassemble the game first. There are tools that help you do this job. You can get game assets with `AssetRipper` ([Link](https://github.com/AssetRipper/AssetRipper)) and view code with `Dnspy` ([Link](https://github.com/dnSpy/dnSpy)).
 
 In AssetRipper: File > Open Folder > Select `LONESTAR` directory (Find the path in Steam, as shown in the picture below)
 
@@ -96,6 +96,8 @@ If multiple mods with the same modID are detected, only the first is used. Note 
 
 ## Testing your mod
 There are tools that help you debug your mods, like [BepInEx](https://github.com/BepInEx/BepInEx) or [UnityExplorer](https://github.com/sinai-dev/UnityExplorer). They are available in Github.
+
+Also there is a mod `loadout` ([link](../Loadout)) that may help you debug your units. And a mod `TutorialMod` ([link](../TutotialMod) & [Code](../TutorialMod_code)) that is used as an example in this document.
 
 ## Publish your mod
 To-be-implemented

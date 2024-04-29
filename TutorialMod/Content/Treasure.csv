@@ -1,0 +1,3 @@
+ID,Name,Name_,Rare,InGame,GainType,Pros,OnlyTalent,UnlockLV,Genera,WeightOffset,BattleRelate,Description,Description_,Args,SkillPath,SpritePath,AddIn,RemoveOut
+int,string,void,int,bool,int,int[],int,int,int[],int,bool,string,void,int[],string,string,int,int
+Core,,破损核心,1,,0,;77;;;,,0,,,,,回合结束时，造成{0}点伤害，推进一个随机数,;3;;;,TS_ChargeCompensation,CrackedCore.png,0,0

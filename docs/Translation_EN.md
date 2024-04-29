@@ -60,4 +60,4 @@ It's OK if you don't fully implement your language, but it's recommended to do s
 
 The steps are quite similar to adding a new language. Add a `.csv` file to `English` or `ChineseSimplified` and write your translation. 
 
-Note that you may even translate your texts into another different language, even if they only exist in another language mod. As long as `LanguageCommon/<LanguageID>;"<LanguageDisplayName>"` doesn't exist, that language won't appear in the language selection. That means your translation will take effect iff the target language mod is active.
+Note that you may even translate your texts into another different language, even if they only exist in another language mod. As long as `LanguageCommon/<LanguageID>;"<LanguageDisplayName>"` doesn't exist, that language won't appear in the language selection. That means your translation will take effect only if the target language mod is active.
