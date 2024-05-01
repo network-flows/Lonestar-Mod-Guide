@@ -1,0 +1,3 @@
+ID,Name,Name_,InGame,Pros,Des,Des_,Effect,Effect_,Args,ExtraInfo,SkillPath,SpritePath,BanEnemyIDs,BanPhases
+int,string,void,bool,string[],string,string,string,string,int[],string,string,string,string[],int[]
+TopRain,@/Name/TopRain,Top Rain,,;77;;;,@/Des/TopRain,Spinning Tops Rain from the sky! No one know why!,@/Effect/TopRain,"At the start of battle, fill your ship with <UNIT>21858|1</UNIT>.",;21858;;1;;;,,BE_TopRain,Top.png,;511;;;,;8;;9;;10;;;

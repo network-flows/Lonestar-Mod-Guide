@@ -1,7 +1,7 @@
 ﻿using Mods;
 using System;
 
-namespace TutorialMod.Patches
+namespace TutorialMod
 {
     public class Skill_CustomAbility : ShipUnitSkill, IBattleStartPre, IRangeEffectCell
     {

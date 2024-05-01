@@ -1,0 +1,5 @@
+ID,Type,Pros,UnlockLV,InGame,Name,Name_,Des,Des_,Args,WeightOffset,SkillPath,Image,InProcess,TalentBanList,BanEnemyList
+string,int,string[],int,bool,string,string,string,string,int[],int,string,string,bool,int[],int[]
+10001,1,;7;;77;;;,5,,Talent/talent_init_coin_name,额外星币,Talent/talent_init_coin_des,初始获得{0}星币。,;15;;;,-20,TA_Init_ExtraCoin,extra_starcoin,,;50030;;;,
+10002,1,;7;;77;;;,5,,Talent/talent_extrahp_name,额外装甲,Talent/talent_extrahp_des,初始获得{0}点血量上限。,;6;;;,-40,TA_Init_ExtraHpMax,extra_armor,,,
+10003,1,;7;;77;;;,5,,Talent/talent_init_bounty_recover_name,协会补给,Talent/talent_init_bounty_recover_des,初始获得额外的基础维修补给（呼叫支援）。,;140;;;,-40,TA_BountyEvent,association_supply,,,

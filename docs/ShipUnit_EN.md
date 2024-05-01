@@ -68,7 +68,7 @@ You may also play a different animation when an event triggers. The `Skill_Anima
 
 ## Modifying existing units
 
-You may modify existing units with code. Eg. The following line makes Quadra Burst Cores require only 3 energy in hand instead of 4.
+You may modify existing units with code. Eg. The following line makes Quadra Burst Cores require only 3 energy in hand instead of 4 **until game exits**.
 ```
 DataShipUnitManager.Instance().GetDataByID(11004).Args[0] = 3;
 ```
@@ -80,18 +80,24 @@ DataShipUnitManager.Instance().GetDataByID(21849).InGame = false;
 ```
 
 ## Detailed Explanation of Each Field
-- ID: String. Must be **unique** in your mod. Upgraded units share the same ID with their downgraded version.
+- ID: Must be **unique** in your mod. Upgraded units share the same ID with their downgraded version.
 - Name/Name_: Name displayed at the title.
 - Lv: Can be 1 or 2. (or 3+ if your unit can be upgraded multiple times). 
 - UnlockLv: 0 to always unlock, or unlocks at the set ship Lv (Ship levels up from 0 to 10. Ship level is hidden in game and different from association Lv)
 - Rare: 0 for common, 1 for rare, 2 for legendary.
-- SkillName/SkillName_: Allows showing text when ability is triggered.
+- SkillName/SkillName_: Text shown when ability triggers.
 
 ![Pair.png](../images/Pair.png)
 
 - Genera: Categorize some units to smaller groups for tag searching. (Eg. Overclock units have tag 5 in their genera list, so they can appear in the "overclock gacha machine" event. )
-- InGame: Leave blank. Or set to FALSE and remove them from random rewards, but they may appear as a fixed reward of an event. 
-- GainType: Zero for gainable units. Units of non-zero `GainType` can't be found in random rewards, but may appear as a fixed reward of an event. 
+- InGame: Set to `FALSE` to disable* it.
+- GainType: 
+    - 0: Enabled.
+    - 1: Only available from shops. 
+    - 2: Only available from events. (Eg. Chain Core)
+    - 3: Only available from talents. (Eg. Disguise Mask)
+    - 4: Only appear as initial items. (Eg. Chameleon Device)
+    - 5: Disabled. (Eg. Replacement in Vacancy)
 - Pros: Specifies which ship(s) can get this unit. (7 for Shielder and 77 for Spacewalker.)
 - PowerSlot: List of color slots. 0 for White, 1 for Blue, 2 for Orange.
 - CountOffset: By default, Common/Rare/Legendary units have 3/2/1 copies in the universe. Set CountOffset to 1/-1 to add/remove a copy.
@@ -108,3 +114,5 @@ DataShipUnitManager.Instance().GetDataByID(21849).InGame = false;
 - SkillPath: The class name of target ability.
 - SpritePath: Image of the unit when they appear as an item. Or leave blank to use a default image.
 - AnimPath: Animation of the unit when they appear on the ship. Or leave blank to use SpritePath as static image when no animation is provided.
+
+\*Disabled: Can't appear in shop or random rewards, but may appear as a fixed reward of an event. Doesn't appear in the encyclopedia.

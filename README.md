@@ -9,4 +9,7 @@ Articles:
 
 [Units](docs/ShipUnit_EN.md)
 
+[Other Content](docs/Content.md)
+
 [Patching](docs/Patch_EN.md)
+

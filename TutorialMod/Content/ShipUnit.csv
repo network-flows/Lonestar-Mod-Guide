@@ -1,10 +1,10 @@
 ID,Name,Name_,Lv,SkillName,SkillName_,UnlockLV,Rare,Genera,InGame,GainType,Pros,PowerSlot,CountOffset,WeightOffset,EquiptLimit,Description,Description_,Properties,Args,ExtraDes,ExtraDes_,Type,SkillPath,SpritePath,AnimPath
-string,string,string,int,string,string,int,int,int[],bool,int,int[],int[],int,int,int,string,string,dic,int[],string,void,int,string,string,string
+string,string,string,int,string,string,int,int,int[],bool,int,string[],int[],int,int,int,string,string,dic,int[],string,void,int,string,string,string
 unitA,,My Basic Core,1,,,0,0,,,0,;7;;;,;1;;;,,,1,,Has no special effects.,,,,,1,Skill_Null,,
 unitA,,My Basic Core+,2,,,0,0,,,0,;7;;;,;1;;1;;;,,,1,,Has no special effects.,,,,,1,Skill_Null,,
 unitB,@/Name/UnitB_1,Translated Unit,1,@/Text/UnitB,My Ability,0,1,,,0,;7;;;,;3;;1;;;,,,1,@/Des/UnitB,*Tripower*: Gain {0} *Power*,,;4;;;,,,1,Skill_TrianglePowerCannon,,
 unitB,@/Name/UnitB_2,Translated Unit,2,@/Text/UnitB,My Ability,0,1,,,0,;7;;;,;1;;1;;;,,,1,@/Des/UnitB,*Tripower*: Gain {0} *Power*,,;6;;;,,,1,Skill_TrianglePowerCannon,,
-unitC,,Ability DIY,1,,New Ability,0,1,,,0,;7;;;,,,,2,,"At the start of the battle, *Destroy* self and equip <UNIT>14002|1</UNIT> to *adjacent* empty grids.",,,,,2,Skill_CustomAbility,device_equip_cannon,
-unitC,,Ability DIY+,2,,New Ability,0,2,,,0,;7;;;,,,,2,,"At the start of the battle, *Destroy* self and equip <MODUNIT>@|unitB|2</MODUNIT> to empty grids in the *same lane*.",,,,,2,Skill_CustomAbility,device_equip_cannon,
-unitD,,Animated Unit,1,,Animation,0,2,,,0,;7;;;,;1;;1;;1;;1;;1;;1;;;,,,1,,"On load, play a different animation.",,,,,2,Skill_Animated,orbitor.png,orbitor/anim.scml
-unitD,,Animated Unit,2,,Animation,0,2,,,0,;7;;;,;1;;1;;1;;1;;1;;1;;;,,,1,,"On load, play the animation once, then reset.",,,,,2,Skill_Animated,orbitor.png,orbitor/anim.scml
+unitC,,Ability DIY,1,,New Ability,0,1,,,0,;7;;;,,,,2,,"At the start of the battle, *Destroy* self and equip <UNIT>14002|1</UNIT> to *adjacent* empty grids.",,,,,2,@.Skill_CustomAbility,device_equip_cannon,
+unitC,,Ability DIY+,2,,New Ability,0,2,,,0,;7;;;,,,,2,,"At the start of the battle, *Destroy* self and equip <MODUNIT>@|unitB|2</MODUNIT> to empty grids in the *same lane*.",,,,,2,@.Skill_CustomAbility,device_equip_cannon,
+unitD,,Animated Unit,1,,Animation,0,2,,,0,;7;;;,;1;;1;;1;;1;;1;;1;;;,,,1,,"On load, play a different animation.",,,,,2,@.Skill_Animated,orbitor.png,orbitor/anim.scml
+unitD,,Animated Unit,2,,Animation,0,2,,,0,;7;;;,;1;;1;;1;;1;;1;;1;;;,,,1,,"On load, play the animation once, then reset.",,,,,2,@.Skill_Animated,orbitor.png,orbitor/anim.scml

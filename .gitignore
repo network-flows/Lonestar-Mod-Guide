@@ -1,1 +1,5 @@
 .vscode
+.vs
+TutorialMod_code/bin
+TutorialMod_code/lib
+TutorialMod_code/obj

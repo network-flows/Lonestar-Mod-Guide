@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Linq;
 using System.Text;
 
-namespace TutorialMod.Patches
+namespace TutorialMod
 {
     // If patching a private method, use [HarmonyPatch(typeof(WantedProcess), "PrivateMethodName")]
     // If patching a private class or a functions with multiple overrides, remove the annotation and use manual patch in UserMod.OnLoad() instead.

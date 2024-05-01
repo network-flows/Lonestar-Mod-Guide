@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace TutorialMod.Patches
+namespace TutorialMod
 {
     public class Skill_Animated : ShipUnitSkill, IPowerLoaded, IPlayerTurnStart
     {
@@ -36,6 +36,7 @@ namespace TutorialMod.Patches
                 };
                 script.Animator.AnimationFinished += callback;
             }
+            base.SkillTextFlow();
         }
 
         public void OnPowerLoadedPreview(PowerData powerData)
