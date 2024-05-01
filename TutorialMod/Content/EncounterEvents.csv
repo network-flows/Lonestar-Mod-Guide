@@ -1,3 +1,0 @@
-ID,EventGroup,Name,Name_,UnlockLV,Days,InGame,Pros,EnterType,Des,Des_,Tags,WeightOffset,RaceSpecial,OptionDes,OptionDes_,OptionScript1,Args1,Weight1,Group1,Jump1,OptionScript2,Args2,Weight2,Group2,Jump2,OptionScript3,Args3,Weight3,Group3,Jump3,PilotBanList
-string,string,string,void,int,int,bool,int[],int,string,void,int[],int,int,string,void,string,int[],int,int,int[],string,int[],int,int,int[],string,int[],int,int,int[],int[]
-100,100,,,0,0,,;7;;77;;;,,,,,,,EvenOptionDes/StartDealBounty,,OC,,,,,,,,,,,,,,,
