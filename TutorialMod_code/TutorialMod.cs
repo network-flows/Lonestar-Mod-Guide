@@ -5,9 +5,9 @@ namespace TutorialMod
 {
     public class TutorialMod : UserMod
     {
-        public override void OnLoad(bool autopatch = true)
+        public override void OnLoad()
         {
-            base.OnLoad(autopatch);
+            base.OnLoad();
             UnityEngine.Debug.Log("Successfully Loaded [" + this.modID + "] at " + this.path);
         }
     }

@@ -78,7 +78,7 @@ Fields exclusive to this item:
 
 - Effect/Effect_, ExtraInfo: (See the image below)
 
-![Alt text](../images/battleEvent2.png)
+![battleEvent2.png](../images/battleEvent2.png)
 
 - BanEnemyIDs: This event won't appear when facing listed enemies. 
     - If element numerical, refers to an enemy in vanilla game;
@@ -87,7 +87,7 @@ Fields exclusive to this item:
     - Eg. adding 511 to BanEnemyIDs will make `TopRain` no longer appear at Bomber, preventing it from being too trivial.
 
 - BanPhases: This event won't appear in listed battles. 
-    - 0 = first battle, 11 = final boss
+    - 0 = first battle (1st battle), 11 = final boss (12th battle)
     - Boss battles have no emergency events.
     - Eg. Adding 8, 9, 10 to BanPhases will make `TopRain` no longer appear in the last galaxy, where it has very little effect.
 
@@ -108,11 +108,11 @@ Fields exclusive to this item:
 - BanEnemyList: This talent conflicts with listed enemies.
     - Same as above.
 
-## Keywords
+## Keywords & Buffs
 
 - File: Content/Keyword.csv
-- Example ID: DeathRattle
-- Sprite Size: 40x40 (WIP)
+- Example ID: DeathRattle (Only a showcase, effects not correctly implemented.)
+- Sprite Size: 40x40
 
 Fields exclusive to this item:
 
@@ -129,4 +129,8 @@ Fields exclusive to this item:
     
 ![deathrattle.png](../images/deathrattle.png)
 
+### Create Buffs from Keywords
+If you want to create a buff from a keyword and attach it to units (like power), simply inherit `Buff` and set its `keyWordString` to your `Keyword`. (In this case you must use a translated `Keyword` instead of `Keyword_`.) 
 
+## Events & Call For Supports
+- File: Content/EncounterEvent.csv
