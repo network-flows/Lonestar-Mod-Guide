@@ -22,9 +22,9 @@ Create your first unit by copying 2 rows of `unitA` in `TutorialMod``. Each row 
 
 ![UnitA.png](../images/UnitA.png)
 
-Note: LoneStar uses the combination of `ID` and `modID` to identify an item. That means units from different mods can share a same `ID` (their mods are different), but treasures and units in a same mod can't have the same `ID` (they refer to different things).
+Note: LoneStar uses the combination of `ID` and `modID` to identify an item. That means units from different mods can share a same `ID` (their mods are different), but treasures and units in a same mod can't have the same `ID` (they refer to different things). modID and ID of modded contents should be a combination of letters, digits and underlines (i.e. `[_0-9A-Za-z]+`). All numerical-valued ID (eg. "114514", "1919810") are occupied by vanilla game, and should **NOT** be used in your mod.
 
-## Example B: Translating Your Unit & Modifying Parameters
+## Example B: Translating Your Units & Modifying Parameters
 
 ![UnitB.png](../images/UnitB.png)
 
@@ -34,15 +34,15 @@ Note: LoneStar uses the combination of `ID` and `modID` to identify an item. Tha
 
 Notice that all mods share translation keys (which is different from ID). To prevent conflicts, it's recommended to add modID to your translation keys. You may use "@" to refer to your modID. (In this case "@" = "TutorialMod")
 
-Even if you write no code, you may paste existing effects to your units. To use the ability of Triangular Core, set `SkillPath` field to `Skill_TrianglePowerCannon`. If you want to modify the amount of Power when TriPowered, set `Args` field accordingly.
+Even if you write no code, you may paste existing effects to your units. To use the ability of Triangular Core, set `SkillPath` field to `Skill_TrianglePowerCannon`. If you want to modify the amount of Power gained when TriPowered, set `Args` field accordingly.
 
 ## Example C: Adding Cool Abilities & Referencing Other Units
 
 ![UnitC.png](../images/UnitC.png)
 
-`unitC` is a unit with some cool effects. You may set `SkillPath` to a new ability, and implement it in your `.dll` file. (See Patching part for more info)
+`unitC` is a unit with some cool effects. You may set `SkillPath` to a new ability, and implement it in your `.dll` file. (See [Patching](Patch_EN.md) part for more info)
 
-Sometimes your units may refer to another unit. To reference a vanilla game unit in description, use `<UNIT>ID|Lv</UNIT>`, to reference a modded unit, use `<MODUNIT>modID|ID|Lv</MODUNIT>`. Units should not reference themselves or create a reference loop.
+Sometimes your units may refer to another unit. To reference a vanilla game unit in description, use `<UNIT>ID|Lv</UNIT>`, to reference a modded unit, use `<UNIT>modID.ID|Lv</UNIT>`. Units should not reference themselves or create a reference loop.
 
 To use the appearance of an existing unit, (Eg. Patch Device), set `SpritePath` to that of the target unit (`device_equip_cannon`). If left blank, your units will use a default sprite instead. You may also create your own in the next example.
 
@@ -52,7 +52,7 @@ To use the appearance of an existing unit, (Eg. Patch Device), set `SpritePath` 
 
 `unitD` is a unit with some animations.
 
-`SpritePath` is the static image of your units when they appear as an item. (In your inventory, as a reward, etc.) To use your own image, add images of size 100x100 to the `Image` folder and reference them in `SpritePath` field.
+`SpritePath` is the image of your units when they appear as an item. (In your inventory, as a reward, etc.) To use your own image, add images of size 100x100 to the `Image` folder and reference them in `SpritePath` field.
 
 `AnimPath` is the animation when your units are equipped on the ship. Lonestar supports Spriter animations. (Get Spriter [here](https://brashmonkey.com/download-spriter-pro/) for free). Put your Spriter animation files into `Animation` folder and reference them in `AnimPath` field. 
 
@@ -73,7 +73,7 @@ You may modify existing units with code. Eg. The following line makes Quadra Bur
 DataShipUnitManager.Instance().GetDataByID(11004).Args[0] = 3;
 ```
 
-This removes Equipping Machine from the pool until game exits.
+This disables Equipping Machine until game exits. (Don't remove vanilla units from database, as it may corrupt some save files. Disable them instead. Modded units can be removed without risk, though.)
 
 ```
 DataShipUnitManager.Instance().GetDataByID(21849).InGame = false;
@@ -101,7 +101,7 @@ DataShipUnitManager.Instance().GetDataByID(21849).InGame = false;
 - Pros: Specifies which ship(s) can get this unit. (7 for Shielder and 77 for Spacewalker.)
 - PowerSlot: List of color slots. 0 for White, 1 for Blue, 2 for Orange.
 - CountOffset: By default, Common/Rare/Legendary units have 3/2/1 copies in the universe. Set CountOffset to 1/-1 to add/remove a copy.
-- WeightOffset: By default, units of the same rarity have the same possibility to appear in random rewards. Set WeightOffset to 30/-30 make them appear 30% more/less frequently.
+- WeightOffset: By default, units of the same rarity have the same chance to appear in random rewards. Set WeightOffset to 30/-30 make them appear 30% more/less frequently.
 - EquipLimit: Unit weight.
 - Description/Description_: Unit descriptions. Keywords should be marked with "*", eg. `*Overclock*(6): Gain *Double Strength*`
 - Properties: Status effects (Buffs) automatically added when unit equipped. (Eg. `US:1` for Activate(1), `PA:2` for 2 Power, etc.) You may also load status effects with code.
@@ -115,4 +115,4 @@ DataShipUnitManager.Instance().GetDataByID(21849).InGame = false;
 - SpritePath: Image of the unit when they appear as an item. Or leave blank to use a default image.
 - AnimPath: Animation of the unit when they appear on the ship. Or leave blank to use SpritePath as static image when no animation is provided.
 
-\*Disabled: Can't appear in shop or random rewards, but may appear as a fixed reward of an event. Doesn't appear in the encyclopedia.
+\*Disabled: Can't appear in shop or random rewards, but may appear as a fixed reward of an event or in a historical save. Doesn't appear in the encyclopedia.

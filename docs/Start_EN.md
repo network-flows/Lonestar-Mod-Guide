@@ -16,7 +16,7 @@ Note that you don't necessarily need any coding in your mod, although some advan
 - Modify game logic (Involves code)
 
 ## Disassemble the game (Optional)
-If your mod involves code, you may need to disassemble the game first. There are tools that help you do this job. You can get game assets with AssetRipper ([Link](https://github.com/AssetRipper/AssetRipper)) and view code with Dnspy ([Link](https://github.com/dnSpy/dnSpy)).
+If your mod involves code, you may need to disassemble the game first. There are tools that help you do this job. You can extract game assets with AssetRipper ([Link](https://github.com/AssetRipper/AssetRipper/releases)) and view code with Dnspy ([Link](https://github.com/dnSpy/dnSpy/releases)).
 
 In AssetRipper: File > Open Folder > Select `LONESTAR` directory (Find the path in Steam, as shown in the picture below)
 
@@ -68,10 +68,10 @@ The structure of a Lonestar mod: (Take TutorialMod for example):
     │   ├─ChineseSimplified
     │   └─CustomLanguage
     ├─mod.json  // Important info of the mod
-    └─TutorialMod.dll  // Code
+    └─TutorialMod.dll  // Built from code
 ```
 
-Note that everything except `mod.json` is optional. If your mod contains no animations or images, it's OK to delete corresponding directories.
+Note that everything except `mod.json` is optional. If your mod contains no animations or images, it's OK to remove corresponding directories.
 
 ## mod.json
 Start your mod by placing `mod.json` in `Dev`, or a subdirectory of it. This file contains the information about your mod, and is the only necessary file of your mod. A `mod.json` looks like this: 

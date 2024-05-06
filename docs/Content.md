@@ -14,7 +14,7 @@ The following checked items can be easily added to your mod with csv (similar to
 - [ ] Enemy Ships
 - [x] Emergency Events
 - [x] Keywords & Buffs
-- [ ] Events
+- [ ] Events & Call For Supports
 - [ ] Laser Skins
 
 ## Common fields
@@ -37,7 +37,7 @@ These are common fields that most types of contents share.
 - SkillPath: Name of the ability class.
 - SpritePath: Image of this item.
 
-\*Disabled: Can't appear in shop or random rewards, but may appear as a fixed reward of an event. 
+\*Disabled: Can't appear in shop or random rewards, but may appear as a fixed reward of an event or in a historical save. Doesn't appear in the encyclopedia.
 
 ## Treasures
 
@@ -111,10 +111,22 @@ Fields exclusive to this item:
 ## Keywords
 
 - File: Content/Keyword.csv
+- Example ID: DeathRattle
 - Sprite Size: 40x40 (WIP)
 
 Fields exclusive to this item:
 
-- Color: Color of the keyword.
-- ImageGroup, Image: WIP
+- Keyword/Keyword_: A set of keywords to be highlighted. 
+    - Each of them should be embraced by "\*" and separated by ";" 
+    - Eg. "\*DeathRattle\*;\*Death rattle\*"
+- KeywordDes: Creates a tooltip.
+    - If left blank, there will be no tooltips. (Only highlights the keyword.)
+- Color: Color of the highlighted keyword.
+- ImageGroup, Image: The icon attached to the keyword.
+    - If both blank, no icon.
+    - If ImageGroup is not blank, use the icon from vanilla game.
+    - If ImageGroup is blank, use the icon provided by your mod.
+    
+![deathrattle.png](../images/deathrattle.png)
+
 

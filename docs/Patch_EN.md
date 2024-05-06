@@ -22,10 +22,11 @@ All needed dependencies are located at `LONESTAR\LONESTAR_Data\Managed` (`LONEST
 - Assembly-CSharp.dll: Game assembly.
 - UnityEngine.dll
 - UnityEngine.CoreModule.dll
+- UnityEngine.AudioModule.dll : About sound effects.
 - LeanLocalization.dll: About translations.
 - Unity.TextMeshPro.dll: About UI.
 
-After adding dependencies to the list, make sure they are ticked, then click OK. Try build the project and it should proceed successfully now. Target dll can be found at `bin/Release/TutorialMod.dll`. You may add other files or 3rd party dependencies anytime you need them.
+After adding dependencies to the list, make sure they are ticked, then click OK. Try build the project and it should proceed successfully now. Target dll can be found at `bin/Release/TutorialMod.dll`. You may add other dlls or third-party dependencies anytime you need them.
 
 ## The UserMod class
 Your assembly should have exactly one class inheriting `UserMod`. See the `TutorialMod` class for example.
@@ -38,22 +39,22 @@ namespace TutorialMod
 {
     public class TutorialMod : UserMod
     {
-        public override void OnLoad(bool autopatch = true)
+        public override void OnLoad()
         {
-            base.OnLoad(autopatch);
+            base.OnLoad();
             UnityEngine.Debug.Log("Successfully Loaded [" + this.modID + "] at " + this.path);
         }
     }
 }
 ```
 
-### void OnLoad(bool autopatch = true)
+### void OnLoad()
 
-Called when your mod is loaded. Using `Onload(true)` will automatically load every patching classes in this assembly, as well as other parts like units, treasures, translations, etc. in a predefined order. It's usually enough to use the default `OnLoad` method, but if you want to do something different (Eg. attaching scripts, or only patching part of the assembly), you can do those things within `OnLoad`.
+Called when your mod is loaded. Calling `Onload()` will automatically load every patching classes in this assembly, as well as other parts like units, treasures, translations, etc. in a predefined order. It's usually enough to use the default `OnLoad` method, but if you want to do something different (Eg. attaching scripts, or only patching part of the assembly), you may override `OnLoad`.
 
 ### void OnAllModLoad(IReadOnlyList<UserMod> mods)
 
-Called when all mods are loaded. You may check how many mods are active and what exactly they are. It's OK to leave blank.
+Called when all mods are loaded. You can check how many mods are active and what exactly they are. It's OK to leave blank.
 
 ### Some useful fields
 
@@ -80,4 +81,4 @@ Note that most event triggers are caught by the corresponding interfaces. Some i
 
 ## Building and adding your .dll to your mod
 
-Build your project in Release mode, and the target dll will be found at `bin/Release/YourModName.dll`. Add target dll along with 3rd party dependencies (if any) to the root directory of your mod. (Name of the dll doesn't matter.) **Do NOT add any dlls that already exist in the game**. Launch the game and your patches should work now.
+Build your project in Release mode, and the target dll will be found at `bin/Release/YourModName.dll`. Add target dll along with third-party dependencies (if any) to the root directory of your mod. (Name of the dll doesn't matter.) **Do NOT add any dlls that already exist in the game**. Launch the game and your patches should work now.
