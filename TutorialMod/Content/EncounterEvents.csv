@@ -1,0 +1,18 @@
+ID,EventGroup,Name,Name_,UnlockLV,Days,InGame,Pros,EnterType,Des,Des_,Tags,WeightOffset,RaceSpecial,OptionDes,OptionDes_,OptionScript1,Args1,Weight1,Group1,Jump1,OptionScript2,Args2,Weight2,Group2,Jump2,OptionScript3,Args3,Weight3,Group3,Jump3,PilotBanList
+string,string,string,string,int,int,bool,string[],int,string,string,int[],int,int,string,string,string,int[],int,int,string[],string,int[],int,int,string[],string,int[],int,int,string[],string[]
+Gamble,Gamble,EventName/1890,,0,0,FALSE,;7;;77;;;,,EventDes/1890,(Enter the casino),;3;;;,-50,,EvenOptionDes/1890_1,(Start the gambling),OC_StarCoin,;5;;;,,,Gamble1,,,,,,,,,,,
+Gamble,Gamble,EventName/1890,,,,,,,,,,,,EvenOptionDes/Refuse,"(Refuse, not consuming the chance)",OC_Close,,,,GambleL,,,,,,,,,,,
+Gamble1,Gamble,EventName/1890,,,,,,,EventDes/1891,(Fisrt round),,,,EvenOptionDes/1890_2,(First round bet),OC_StarCoinLose,;5;;;,,1,,OC_StarCoin,;10;;;,50,2,Gamble2,OC_Close,,50,2,Gamble1F,
+Gamble1,Gamble,EventName/1890,,,,,,,,,,,,EvenOptionDes/1890_3,(First round leave),OC_Close,,,,Gamble1L,,,,,,,,,,,
+GambleL,Gamble,EventName/1890,,,,,,,EventDes/1892,(Left directly),,,,EvenOptionDes/Close,(Leave),,,,,,,,,,,,,,,,
+Gamble2,Gamble,EventName/1890,,,,,,,EventDes/1893,(Second Round),,,,EvenOptionDes/1890_4,(Second round bet),OC_StarCoinLose,;10;;;,,1,,OC_StarCoin,;20;;;,50,2,Gamble3,OC_Close,,50,2,Gamble2F,
+Gamble2,Gamble,EventName/1890,,,,,,,,,,,,EvenOptionDes/1890_3,(Second round leave),OC_Close,,,,Gamble2L,,,,,,,,,,,
+Gamble1F,Gamble,EventName/1890,,,,,,1,EventDes/1894,(Failed first round),,,,EvenOptionDes/Close,(Leave),OC_SetBountyFinished,,,,,,,,,,,,,,,
+Gamble1L,Gamble,EventName/1890,,,,,,,EventDes/1895,(Left first round),,,,EvenOptionDes/Close,(Leave),OC_SetBountyFinished,,,,,,,,,,,,,,,
+Gamble3,Gamble,EventName/1890,,,,,,,EventDes/1893,(Third Round),,,,EvenOptionDes/1890_5,(Third round bet),OC_StarCoinLose,;20;;;,,1,,OC_StarCoin,;40;;;,50,2,Gamble4,OC_Close,,50,2,Gamble3F,
+Gamble3,Gamble,EventName/1890,,,,,,,,,,,,EvenOptionDes/1890_3,(Third round leave),OC_Close,,,,Gamble3L,,,,,,,,,,,
+Gamble2F,Gamble,EventName/1890,,,,,,1,EventDes/1897,(Failed second round),,,,EvenOptionDes/Close,(Leave),OC_SetBountyFinished,,,,,,,,,,,,,,,
+Gamble2L,Gamble,EventName/1890,,,,,,,EventDes/1898,(Left second round),,,,EvenOptionDes/Close,(Leave),OC_SetBountyFinished,,,,,,,,,,,,,,,
+Gamble3W,Gamble,EventName/1890,,,,,,,EventDes/1899,(Won third round),,,,EvenOptionDes/Close,(Leave),OC_SetBountyFinished,,,,,,,,,,,,,,,
+Gamble3F,Gamble,EventName/1890,,,,,,1,EventDes/1897,(Failed third round),,,,EvenOptionDes/Close,(Leave),OC_SetBountyFinished,,,,,,,,,,,,,,,
+Gamble3L,Gamble,EventName/1890,,,,,,,EventDes/1898,(Left third round),,,,EvenOptionDes/Close,(Leave),OC_SetBountyFinished,,,,,,,,,,,,,,,

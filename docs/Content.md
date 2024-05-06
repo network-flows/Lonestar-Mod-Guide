@@ -26,7 +26,7 @@ These are common fields that most types of contents share.
     - In most cases: Association Lv required to enable this item. (0-70)
     - For Units: Ship Lv required to enable this item. (0-10)
 - InGame: Set to `FALSE` to disable* this item.
-- Pros: This item is enabled exclusive to target ship.
+- Pros: This item is enabled exclusive to listed ships.
     - Mega-ship counts as the original ship.
     - If element numerical, refers to a ship in vanilla game;
     - If element in the format: `<ModID>.<ShipID>`, refers to a ship in another mod;
@@ -133,4 +133,84 @@ Fields exclusive to this item:
 If you want to create a buff from a keyword and attach it to units (like power), simply inherit `Buff` and set its `keyWordString` to your `Keyword`. (In this case you must use a translated `Keyword` instead of `Keyword_`.) 
 
 ## Events & Call For Supports
-- File: Content/EncounterEvent.csv
+
+- File: Content/EncounterEvents.csv
+- Example: Gamble
+
+A full event may contain multiple pages. (Eg. Choosing an option may enter another page.) Each event page may have multiple options. Each option may have multiple scripts, (Eg. Star Coin gain at the cost of HP lose) and may have chances of triggering different consequences. (Eg. winning or losing a gamble)
+
+The event structure is as follow:
+```
+└─Event, indicated by EventGroup (Eg. gambling event)
+    └─Event Page, indicated by ID (Eg. in one bet, bet 5 coins or leave)
+        └─Option, each line is an option. (Eg. bet 5 coins)
+            ├─ScriptGroup (lose 5 coins)
+            │   └─Script (lose 5 coins)
+            └─ScriptGroup (win 10 coins or lose the bet)
+                ├─Script (50%: close the event)
+                └─Script (50%: win 10 coins, go next page)
+```
+
+Fields exclusive to this item:
+
+- ID: Options on a same **event page** should have the same ID.
+- EventGroup: Options of a same **full event** should have the same EventGroup.
+- Days: Days spent on this event. 0 if this is a special event. (Call for support or reward event)
+- EnterType: Set this field to 1 if this is a bad event (as a result of the previous choice). This is optional.
+    - Have a special effect upon entering. 
+    - Usually used in a bad roll when event involves probability. (Eg. failure in a gamble, HP lose on a risky attempt)
+- Tags: The event type to display on vacation choice screen. Each vacation event should has at least 1 tag.
+    - 1: Units
+    - 2: Treasures
+    - 3: Star Coins
+    - 4: Upgrade
+    - 5: Load Limit (Not used)
+    - 6: Energy Source
+    - 7: Repair
+    - 8: Shop
+    - 9: Shield
+    - 10: Modification
+    - 11: Fuel
+    - 12: Swap
+    - 13: End Vacation (Not used)
+- RaceSpecial: This option is exclusive to a race.
+    - 1: Human
+    - 2: Mech
+    - 3: Beastkin
+    - 4: Treant
+- OptionDes/OptionDes_: Description of this option.
+- OptionScript1-3: Class name of this script
+- Args1-3: Arguments of this script.
+- Weight1-3: Chances of this script to be chosen in a  ScriptGroup.
+- Group1-3: Which ScriptGroup this script belongs to. 
+    - Exactly 1 script of each ScriptGroup will be executed
+    - Eg: if there are 3 scripts S1(Group1 = 1), S2(Group2 = 2, Weight2 = 40), and S3(Group3 = 2, Weight3 = 60), then S1 will be executed first, then SB(40%) or SC(60%) will be executed.
+- Jump1-3: Jumps to a new page when this script finishes. 
+    - If left empty, end this event.
+    - If multiple scripts are executed, the last non-empty jump will take effect.
+    - Some scripts may have multiple Jump targets. (Eg. when trading a Unit for star coins, if cancelled at the unit choice screen, will jump to a different page, offering no star coins and showing a different description.)
+
+### Writing your own scripts
+
+Inherit the `OptionContent` Class and implement the  following functions:
+- `Check`: Check preconditions of the option. Return false to disable this option. (Eg. when you have not enough star coins to pay)
+- `OnOptionInit`: Process description text, lock the reward, etc. 
+- `Do`: Execute the script.
+
+If you have correctly extracted the game files in [Getting Started](Start_EN.md#disassemble-the-game-optional), there are many examples that will help you design your events. Note that the field types of extracted csv file is slightly different from that of TutorialMod. (Eg. ID in vanilla game is int instead of string) Use TutorialMod's version.
+
+### Turning an event into a Call for Support
+
+Similar to adding contents like events or treasures.
+
+- File: Content/BountyEvents.csv
+- Example: Gamble
+- Sprite Size: 50x50
+
+The ID of the Call for Support should be identical to that of the event entrance.
+
+### Notes on Events
+- All events should include a safe exit to prevent looping and no choice situations.
+- Call for support events and reward events should cost 0 days and mark InGame to `FALSE`. Vacation events should cost 2, 3, or 4 days.
+- When call for support events finishes, use `OC_SetBountyFinished` to consume the support chance and trigger treasure abilities.
+- Call for support events should have an exit option to exit the event without consuming the chance. (not calling `OC_SetBountyFinished`)
