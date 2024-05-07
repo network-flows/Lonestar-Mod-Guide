@@ -8,7 +8,7 @@ The following checked items can be easily added to your mod with csv (similar to
 
 - [x] [Units](ShipUnit_EN.md)
 - [x] [Treasures](#Treasures)
-- [x] [Talents](#talents)
+- [x] [Talents](#Talents)
 - [x] [Pilots](#Pilots)
 - [ ] Player Ships
 - [ ] Enemy Ships
