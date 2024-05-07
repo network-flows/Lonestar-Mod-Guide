@@ -6,15 +6,15 @@ This page tell you the details on how to add other contents to your mod. If you 
 
 The following checked items can be easily added to your mod with csv (similar to Units). The unchecked ones are working in progress (WIP) and cannot be added in such a way. However, you may still add them by writing [Patches](Patch_EN.md). 
 
-- [x] Units
-- [x] Treasures
-- [x] Talents
+- [x] [Units](ShipUnit_EN.md)
+- [x] [Treasures](#Treasures)
+- [x] [Talents](#talents)
 - [ ] Pilots
 - [ ] Player Ships
 - [ ] Enemy Ships
-- [x] Emergency Events
-- [x] Keywords & Buffs
-- [ ] Events & Call For Supports
+- [x] [Emergency Events](#BattleEvents)
+- [x] [Keywords & Buffs](#Keywords)
+- [x] [Events & Call For Supports](#Events)
 - [ ] Laser Skins
 
 ## Common fields
@@ -39,7 +39,7 @@ These are common fields that most types of contents share.
 
 \*Disabled: Can't appear in shop or random rewards, but may appear as a fixed reward of an event or in a historical save. Doesn't appear in the encyclopedia.
 
-## Treasures
+## Treasures <a id="Treasures"></a>
 
 - File: Content/Treasure.csv
 - Example ID: Vulcan
@@ -64,7 +64,7 @@ Fields exclusive to this item:
 - AddIn: This treasure is disabled until you finish the first Xth galaxy. If set to 0, available from the start.
 - RemoveOut: This treasure is disabled when you finish the Xth galaxy. If set to 0, available till the end.
 
-## Emergency Events
+## Emergency Events<a id="BattleEvents"></a>
 
 - File: Content/BattleEvent.csv
 - Example ID: TopRain
@@ -91,9 +91,10 @@ Fields exclusive to this item:
     - Boss battles have no emergency events.
     - Eg. Adding 8, 9, 10 to BanPhases will make `TopRain` no longer appear in the last galaxy, where it has very little effect.
 
-## Talents
+## Talents <a id="Talents"></a>
 
 - File: Content/Talent.csv
+- Example ID: CoinGain
 - Sprite Size: 100x100
 
 Fields exclusive to this item:
@@ -108,7 +109,7 @@ Fields exclusive to this item:
 - BanEnemyList: This talent conflicts with listed enemies.
     - Same as above.
 
-## Keywords & Buffs
+## Keywords & Buffs <a id="Keywords"></a>
 
 - File: Content/Keyword.csv
 - Example ID: DeathRattle (Only a showcase, effects not correctly implemented.)
@@ -132,7 +133,7 @@ Fields exclusive to this item:
 ### Create Buffs from Keywords
 If you want to create a buff from a keyword and attach it to units (like power), simply inherit `Buff` and set its `keyWordString` to your `Keyword`. (In this case you must use a translated `Keyword` instead of `Keyword_`.) 
 
-## Events & Call For Supports
+## Events & Call For Supports  <a id="Events"></a>
 
 - File: Content/EncounterEvents.csv
 - Example: Gamble
@@ -184,20 +185,22 @@ Fields exclusive to this item:
 - Weight1-3: Chances of this script to be chosen in a  ScriptGroup.
 - Group1-3: Which ScriptGroup this script belongs to. 
     - Exactly 1 script of each ScriptGroup will be executed
-    - Eg: if there are 3 scripts S1(Group1 = 1), S2(Group2 = 2, Weight2 = 40), and S3(Group3 = 2, Weight3 = 60), then S1 will be executed first, then SB(40%) or SC(60%) will be executed.
+    - Eg: if there are 3 scripts: S1 (Group1 = 1), S2 (Group2 = 2, Weight2 = 40), and S3 (Group3 = 2, Weight3 = 60), then S1 will be executed first, then SB (40%) or SC (60%) will be executed.
 - Jump1-3: Jumps to a new page when this script finishes. 
     - If left empty, end this event.
     - If multiple scripts are executed, the last non-empty jump will take effect.
-    - Some scripts may have multiple Jump targets. (Eg. when trading a Unit for star coins, if cancelled at the unit choice screen, will jump to a different page, offering no star coins and showing a different description.)
+    - Some scripts may have multiple Jump targets. (Eg. when trading a Unit for star coins, if cancelled at the unit choice screen, will jump to a different page, offering no star coins and showing a different description.) 
+    - The jump target can also be controlled with code by setting `option.jumpID`.
 
 ### Writing your own scripts
 
 Inherit the `OptionContent` Class and implement the  following functions:
-- `Check`: Check preconditions of the option. Return false to disable this option. (Eg. when you have not enough star coins to pay)
-- `OnOptionInit`: Process description text, lock the reward, etc. 
-- `Do`: Execute the script.
 
-If you have correctly extracted the game files in [Getting Started](Start_EN.md#disassemble-the-game-optional), there are many examples that will help you design your events. Note that the field types of extracted csv file is slightly different from that of TutorialMod. (Eg. ID in vanilla game is int instead of string) Use TutorialMod's version.
+- `OnOptionInit`: Process description text, lock the reward, hide this option, etc. 
+- `Check`: Check preconditions of this option. Return false to disable this option. (Eg. when you have not enough star coins to pay)
+- `Do`: Execute this script.
+
+If you have correctly extracted the game files in [Getting Started](Start_EN.md#disassemble-the-game-optional), there are many examples that will help you design your events. Note that the field types of extracted csv file are slightly different from that of TutorialMod. (Eg. ID in vanilla game is int instead of string) Please use TutorialMod's version.
 
 ### Turning an event into a Call for Support
 
@@ -213,4 +216,5 @@ The ID of the Call for Support should be identical to that of the event entrance
 - All events should include a safe exit to prevent looping and no choice situations.
 - Call for support events and reward events should cost 0 days and mark InGame to `FALSE`. Vacation events should cost 2, 3, or 4 days.
 - When call for support events finishes, use `OC_SetBountyFinished` to consume the support chance and trigger treasure abilities.
-- Call for support events should have an exit option to exit the event without consuming the chance. (not calling `OC_SetBountyFinished`)
+- Call for support events should have an option to exit the event without consuming the chance and also without any side effects. (i.e. to exit without calling `OC_SetBountyFinished`)
+- As a result of UI arrangement, each event page can only have at most 6 options (including hidden options) or 5 shown options (including disabled options).

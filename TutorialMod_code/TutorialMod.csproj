@@ -35,6 +35,7 @@
     <Compile Include="Patches\Patch_WantedProcess.cs" />
     <Compile Include="Patches\Skill_Animated.cs" />
     <Compile Include="Patches\Skill_CustomAbility.cs" />
+    <Compile Include="Patches\TA_CoinGain.cs" />
     <Compile Include="Patches\TS_Vulcan.cs" />
     <Compile Include="TutorialMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
