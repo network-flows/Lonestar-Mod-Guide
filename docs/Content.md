@@ -9,7 +9,7 @@ The following checked items can be easily added to your mod with csv (similar to
 - [x] [Units](ShipUnit_EN.md)
 - [x] [Treasures](#Treasures)
 - [x] [Talents](#talents)
-- [ ] Pilots
+- [x] [Pilots](#Pilots)
 - [ ] Player Ships
 - [ ] Enemy Ships
 - [x] [Emergency Events](#BattleEvents)
@@ -218,3 +218,26 @@ The ID of the Call for Support should be identical to that of the event entrance
 - When call for support events finishes, use `OC_SetBountyFinished` to consume the support chance and trigger treasure abilities.
 - Call for support events should have an option to exit the event without consuming the chance and also without any side effects. (i.e. to exit without calling `OC_SetBountyFinished`)
 - As a result of UI arrangement, each event page can only have at most 6 options (including hidden options) or 5 shown options (including disabled options).
+
+## Pilots <a id="Pilots"></a>
+
+- File: Content/Pilot.csv
+- Example ID: Pip
+- Sprite Size: 512x512
+
+Fields exclusive to this item:
+- PilotTitle/PilotTitle_ & PilotName/PilotName_: Two parts of this pilot's name.
+- Race: race of this pilot.
+    - 0: Human
+    - 1: Mech
+    - 2: Beastkin
+    - 3: Treant
+    - 9: All
+- Talent: Inherent talent of this pilot. Can be a talent in  vanilla game (numerical), from another mod (`<ModID>.<TalentID>`), or in your mod (otherwise).
+- RandomSlotNum: This pilot is spawned with that many random talents. 
+- Remark: Remark of this pilot's talent, or write anything you like. Has no effect.
+- PilotMonologue: Controls the talking behavior of this pilot.
+    - To create monologue, inherit the `PilotMono` class and write code on when and what to speak.
+    - PilotMono acts very much like a treasure. The difference is its event listeners are added manually instead of automatically.
+    - Examples see `PM_<PilotID>` (Eg. `PM_10000`) in [extracted game files](Start_EN.md#disassemble-the-game-optional).
+    - If left blank, there will be no talking at all.

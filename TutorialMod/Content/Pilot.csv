@@ -1,0 +1,3 @@
+ID,PilotTitle,PilotTitle_,PilotName,PilotName_,Pros,Description,Description_,Race,UnlockLv,Talent,RandomSlotNum,InGame,SpritePath,Remark,PilotMonologue
+string,string,string,string,string,string[],string,string,int,int,string,int,bool,string,void,string
+Pip,@/Title/Pip,Tester,@/Name/Pip,Pip,;7;;77;;;,@/Des/Pip,The mod tester.,2,0,@.CoinGain,2,,Pip.png,,
