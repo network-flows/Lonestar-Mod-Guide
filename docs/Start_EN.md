@@ -42,13 +42,14 @@ Dnspy won't extract game assets, but it supports code searching and game logic m
 
 
 ## Mod Structure
-All mods are located in `%APPDATA%/../LocalLow/Shuxi/LONESTAR/Mods` directory. 
+All mods are located in (Windows: `%USERPROFILE%/AppData/LocalLow/Shuxi/LONESTAR/Save`) or (MAC: `~/Library/Application Support/Shuxi/LONESTAR/Mods`) 
 ```
 └─Mods
     ├─Dev  // mods in development, always active
     │   ├─Mod1
     │   ├─Mod2
     │   └─TranslationAutoComplete  // Translation related
+    ├─Local // mods installed manually
     ├─Steam // mods from Steam Workshop
     │   └─TutorialMod  // Tutorial mod
     └─mod_settings.json  // List of mods and their activation status
@@ -68,13 +69,14 @@ The structure of a Lonestar mod: (Take TutorialMod for example):
     │   ├─ChineseSimplified
     │   └─CustomLanguage
     ├─mod.json  // Important info of the mod
+    ├─preview.png  // Preview image shown in workshop
     └─TutorialMod.dll  // Built from code
 ```
 
 Note that everything except `mod.json` is optional. If your mod contains no animations or images, it's OK to remove corresponding directories.
 
 ## mod.json
-Start your mod by placing `mod.json` in `Dev`, or a subdirectory of it. This file contains the information about your mod, and is the only necessary file of your mod. A `mod.json` looks like this: 
+Start your mod by creating a folder in `Dev` and placing `mod.json` into it. This file contains the information about your mod, and is the only necessary file of your mod. A `mod.json` looks like this: 
 
 ```
 {
@@ -92,7 +94,7 @@ Start your mod by placing `mod.json` in `Dev`, or a subdirectory of it. This fil
 - version: (Optional) Version displayed on the mod screen.
 - author: (Optional) Author displayed on the mod screen.
 
-If multiple mods with the same modID are detected, only the first is used. Note that dev mods are always loaded first. So if you have a same steam mod, they will be replaced by their dev version.
+If multiple mods with the same modID are detected, only the first is used. Note that mods load in the order Dev > Steam > Local. So if you have a dev mod, it will override any Steam mod of the same modID.
 
 ## Testing your mod
 There are tools that help you debug your mods, like [BepInEx](https://github.com/BepInEx/BepInEx) or [UnityExplorer](https://github.com/sinai-dev/UnityExplorer). They are available in Github.
@@ -100,4 +102,8 @@ There are tools that help you debug your mods, like [BepInEx](https://github.com
 Also there is a mod `loadout` ([link](../Loadout)) that may help you debug your units. And a mod `TutorialMod` ([link](../TutotialMod) & [Code](../TutorialMod_code)) that is used as an example in this document.
 
 ## Publish your mod
-To-be-implemented
+Publish your mod by pressing the update button in Mod page. It's advised to include a `preview.png` that is shown on the workshop page. 
+
+If this is your first time to upload a mod, that should direct you to an agreement page of Steam.
+
+Sometimes the workshop mods are not updated in time. So it's better to make bigger updates in less frequency. Also, updating the version number will help players identify whether their mod is up-to-date.
