@@ -70,7 +70,7 @@
     - 图片是白色透明底的，最好用PS等工具编辑
     - 在展示的时候，图片的四角是被切掉的（如图），实际展示区域是一个八边形。
 
-![battleEvent.png](../images/battleEvent.png)
+![battleEvent_t.png](../images/battleEvent_t.png)
 
 这件物品独占的参数：
 

@@ -74,7 +74,7 @@ Fields exclusive to this item:
     - The image is white and transparent by default.
     - The image has corners cut when displayed, as is shown in the image below. The displayed area is an octagon.
 
-![battleEvent.png](../images/battleEvent.png)
+![battleEvent_t.png](../images/battleEvent_t.png)
 
 Fields exclusive to this item:
 
