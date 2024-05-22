@@ -1,243 +1,242 @@
-# Other Contents
+# 添加其他内容
 
-This page tell you the details on how to add other contents to your mod. If you haven't read [Units](ShipUnit_EN.md) page, please read that first.
+简体中文 [English](Content_EN.md)
 
-## What content can be added to your mod:
+本文主要描述如何添加其他内容。如果你还没读过[部件教程](ShipUnit.md)，请先阅读那篇文章。
 
-The following checked items can be easily added to your mod with csv (similar to Units). The unchecked ones are working in progress (WIP) and cannot be added in such a way. However, you may still add them by writing [Patches](Patch_EN.md). 
+## 哪些内容可被添加到模组中
 
-- [x] [Units](ShipUnit_EN.md)
-- [x] [Treasures](#Treasures)
-- [x] [Talents](#Talents)
-- [x] [Pilots](#Pilots)
-- [ ] Player Ships
-- [ ] Enemy Ships
-- [x] [Emergency Events](#BattleEvents)
-- [x] [Keywords & Buffs](#Keywords)
-- [x] [Events & Call For Supports](#Events)
-- [ ] Laser Skins
+以下打勾的内容可以通过csv文件轻松导入游戏（就像部件一样）。未勾选的内容正在施工中...不过你仍然可以绕过csv直接用代码添加这些内容。请参阅[补丁教程](Patch.md)。
 
-## Common fields
-These are common fields that most types of contents share.
+- [x] [部件](ShipUnit.md)
+- [x] [宝物](#Treasures)
+- [x] [天赋](#Talents)
+- [x] [驾驶员](#Pilots)
+- [ ] 玩家飞船
+- [ ] 敌方飞船
+- [x] [突发情况](#BattleEvents)
+- [x] [关键词及增益](#Keywords)
+- [x] [事件及呼叫支援](#Events)
+- [ ] 激光皮肤
 
-- ID: String. Must be unique in your mod.
-- Name/Name_: Display name of this item.
-- UnlockLV: 
-    - In most cases: Association Lv required to enable this item. (0-70)
-    - For Units: Ship Lv required to enable this item. (0-10)
-- InGame: Set to `FALSE` to disable* this item.
-- Pros: This item is enabled exclusive to listed ships.
-    - Mega-ship counts as the original ship.
-    - If element numerical, refers to a ship in vanilla game;
-    - If element in the format: `<ModID>.<ShipID>`, refers to a ship in another mod;
-    - Otherwise: element refers to a ship in this mod.
-- WeightOffset: Set this value to make this item appear X% more or less frequently.
-- Description/Description_: Item descriptions.
-- Args: Arguments of ability.
-- SkillPath: Name of the ability class.
-- SpritePath: Image of this item.
+## 共有字段
+大多数内容共有的字段在这里集中列出，而不再单独出现在后面的每项内容中。
 
-\*Disabled: Can't appear in shop or random rewards, but may appear as a fixed reward of an event or in a historical save. Doesn't appear in the encyclopedia.
+- ID: String. 这件物品的标识符，在你的模组范围内必须是唯一的。
+- Name/Name_: 这件物品的名字。
+- UnlockLV: 这件物品的解锁等级
+    - 大多数情况下指协会等级（0到70）
+    - 对于部件，指的是对应飞船的等级（0到10）
+- InGame: 设置成FALSE时，禁用\*这件物品
+- Pros: 这件物品仅在游玩这些飞船时才会碰到
+    - 大船号，或者中途换船不改变飞船的ID
+    - 遵循[ID命名法](ShipUnit.md#IDNaming)，也可以指定其他mod的内容。
+- WeightOffset: 修改这件物品的出现频率（以百分比形式修改，比如-50减半，100翻倍）
+- Description/Description_: 这件物品的描述。
+- Args: 这件物品的效果的参数。
+- SkillPath: 这件物品的效果的类名。
+- SpritePath: 这件物品的图片，不同种类的物品图片大小也不同，会单独标明。
 
-## Treasures <a id="Treasures"></a>
+\*禁用：这件物品不能出现在商店或者随机奖励中，也不会出现在图鉴里。但可能出现在事件的固定奖励中，也有可能出现在历史记录中。
 
-- File: Content/Treasure.csv
-- Example ID: Vulcan
-- Sprite Size: 120x120
+## 宝物 <a id="Treasures"></a>
 
-Fields exclusive to this item:
+- 文件: Content/Treasure.csv
+- 示例: 火神炮
+- 图片大小: 120x120
 
-- Rare: 0 for common, 1 for rare, 2 for legendary.
+这件物品独占的参数：
+
+- Rare: 宝物的稀有度，0/1/2分别代表普通/稀有/传说
 - GainType: 
-    - 0: Enabled.
-    - 1: Only available from shops.
-    - 2: Only available from events.
-    - 3: Only available from talents.
-    - 4: Only appear as initial items.
-    - 5: Disabled.
-- OnlyTalent: This treasure is enabled only if target talent is present. (Making it an pilot exclusive treasure.)
-    - If numerical, refers to a talent in vanilla game;
-    - If in the format: `<ModID>.<TalentID>`, refers to a talent in another mod;
-    - Otherwise: refers to a talent in this mod.
-- Genera: Categorize some treasures to smaller groups for tag searching. 
-- BattleRelate: Deprecated. Has no effect.
-- AddIn: This treasure is disabled until you finish the first Xth galaxy. If set to 0, available from the start.
-- RemoveOut: This treasure is disabled when you finish the Xth galaxy. If set to 0, available till the end.
+    - 0: 正常
+    - 1: 只能从商店里买
+    - 2: 只能从事件里拿
+    - 3: 只能从天赋里刷
+    - 4: 初始宝物
+    - 5: 禁用的宝物
+- OnlyTalent: 这个宝物是哪个天赋的专属宝物
+    - 遵循[ID命名法](ShipUnit.md#IDNaming)，也可以指定其他mod的内容。
+- Genera: 这个宝物属于哪个类别。你可以分类查找宝物。 
+- BattleRelate: 弃用属性，没什么用。
+- AddIn: 在完成第N幕前不会获得此宝物。如果设为0就是从开始即可获得。
+- RemoveOut: 在完成第N幕后不会获得此宝物。如果设为0就是直到游戏结束都可获得。
 
-## Emergency Events<a id="BattleEvents"></a>
+## 突发情况（战斗事件）<a id="BattleEvents"></a>
 
-- File: Content/BattleEvent.csv
-- Example ID: TopRain
-- Sprite Size: 128x128. 
-    - The image is white and transparent by default.
-    - The image has corners cut when displayed, as is shown in the image below. The displayed area is an octagon.
+- 文件: Content/BattleEvent.csv
+- 示例: 陀螺雨
+- 图像大小: 128x128. 
+    - 图片是白色透明底的，最好用PS等工具编辑
+    - 在展示的时候，图片的四角是被切掉的（如图），实际展示区域是一个八边形。
 
 ![battleEvent.png](../images/battleEvent.png)
 
-Fields exclusive to this item:
+这件物品独占的参数：
 
-- Effect/Effect_, ExtraInfo: (See the image below)
+- Effect/Effect_, ExtraInfo: （看下面）
 
-![battleEvent2.png](../images/battleEvent2.png)
+![battleEvent2.png](../images/battleEvent2_zh.png)
 
-- BanEnemyIDs: This event won't appear when facing listed enemies. 
-    - If element numerical, refers to an enemy in vanilla game;
-    - If element in the format: `<ModID>.<EnemyID>`, refers to an enemy in another mod;
-    - Otherwise: element refers to an enemy in this mod.
-    - Eg. adding 511 to BanEnemyIDs will make `TopRain` no longer appear at Bomber, preventing it from being too trivial.
+- BanEnemyIDs: 对战这些敌人时，这个战斗事件不会出现
+    - 遵循[ID命名法](ShipUnit.md#IDNaming)，也可以指定其他mod的内容。
+    - 例如：对战炸弹号（ID = 511）时移除陀螺雨，避免让对面显得很呆
+- BanPhases: 在对战这些序号的敌人时，这个战斗事件不会出现
+    - 从0开始到11结束，例如0是第一幕第一个爪牙，10是第三幕精英
+    - 首领战斗不会出现事件
+    - 例如在最后一幕（8，9，10）移除陀螺雨，避免让这个事件显得很呆。
 
-- BanPhases: This event won't appear in listed battles. 
-    - 0 = first battle (1st battle), 11 = final boss (12th battle)
-    - Boss battles have no emergency events.
-    - Eg. Adding 8, 9, 10 to BanPhases will make `TopRain` no longer appear in the last galaxy, where it has very little effect.
+## 天赋 <a id="Talents"></a>
 
-## Talents <a id="Talents"></a>
+- 文件: Content/Talent.csv
+- 示例: 贪婪
+- 图像大小: 100x100
 
-- File: Content/Talent.csv
-- Example ID: CoinGain
-- Sprite Size: 100x100
+这件物品独占的参数：
 
-Fields exclusive to this item:
+- Type: 随机天赋是1，固有天赋是2
+- InProgress: 设为FALSE时，这个天赋不能在半路上获得（例如变幻方块）
+- TalentBanList: 这个天赋与哪些天赋冲突
+    - 遵循[ID命名法](ShipUnit.md#IDNaming)，也可以指定其他mod的内容。
+    - 冲突是相互的，只用写一边就行了。
+- BanEnemyList: 这个天赋与哪些敌人冲突
+    - 和上面一样
 
-- Type: 1 for Random Talents, 2 for Inherent Talents
-- InProgress: set to FALSE to make this talent only available at game start. (Eg. Shifting Block)
-- TalentBanList: This talent conflicts with listed talents.
-    - If element numerical, refers to a talent in vanilla game;
-    - If element in the format: `<ModID>.<TalentID>`, refers to a talent in another mod;
-    - Otherwise: element refers to a talent in this mod.
-    - Relationship is mutual.
-- BanEnemyList: This talent conflicts with listed enemies.
-    - Same as above.
+## 关键词及增益效果 <a id="Keywords"></a>
 
-## Keywords & Buffs <a id="Keywords"></a>
+- 文件: Content/Keyword.csv
+- 示例: 亡语 (只是示例，并没有正确实现)
+- 图像大小: 40x40
 
-- File: Content/Keyword.csv
-- Example ID: DeathRattle (Only a showcase, effects not correctly implemented.)
-- Sprite Size: 40x40
+这件物品独占的参数：
 
-Fields exclusive to this item:
-
-- Keyword/Keyword_: A set of keywords to be highlighted. 
-    - Each of them should be embraced by "\*" and separated by ";" 
-    - Eg. "\*DeathRattle\*;\*Death rattle\*"
-- KeywordDes: Creates a tooltip.
-    - If left blank, there will be no tooltips. (Only highlights the keyword.)
-- Color: Color of the highlighted keyword.
-- ImageGroup, Image: The icon attached to the keyword.
-    - If both blank, no icon.
-    - If ImageGroup is not blank, use the icon from vanilla game.
-    - If ImageGroup is blank, use the icon provided by your mod.
+- Keyword/Keyword_: 这些单词出现时会被捕获并高亮
+    - 每个单词都要用"\*"扩起来，不同的单词要用";"分割
+    - 例如 "\*亡语\*;\*亡语！\*"，这样的话"亡语"和"亡语！"都被视为关键字。
+- KeywordDes: 生成一个提示
+    - 如果留空，就不会生成提示，只高亮关键词。
+- Color: 关键词的颜色
+- ImageGroup, Image: 关键词的图标
+    - 如果都留空，就没有图标
+    - 如果ImageGroup非空，则使用本体游戏中的图标
+    - 如果ImageGroup为空，则使用本模组提供的图标
     
-![deathrattle.png](../images/deathrattle.png)
+![deathrattle_zh.png](../images/deathrattle_zh.png)
 
-### Create Buffs from Keywords
-If you want to create a buff from a keyword and attach it to units (like power), simply inherit `Buff` and set its `keyWordString` to your `Keyword`. (In this case you must use a translated `Keyword` instead of `Keyword_`.) 
+### 用关键词生成增益效果
+如果你想从关键词生成增益效果并把它们附在部件的右下角（像功率一样），只需要继承`Buff`类，然后把它的`keyWordString`设置为你的`Keyword`，不过这种情况下你得使用`Keyword`而不是`Keyword_`（也就是说需要添加翻译条目）
 
-## Events & Call For Supports  <a id="Events"></a>
+## 事件及呼叫支援  <a id="Events"></a>
 
-- File: Content/EncounterEvents.csv
-- Example: Gamble
+- 文件: Content/EncounterEvents.csv
+- 示例: Gamble
 
-A full event may contain multiple pages. (Eg. Choosing an option may enter another page.) Each event page may have multiple options. Each option may have multiple scripts, (Eg. Star Coin gain at the cost of HP lose) and may have chances of triggering different consequences. (Eg. winning or losing a gamble)
+~~一个大事件可能包含多个选择页面（例如选完一个选项跳转到下一个选择页面），每个选择页面可能包含多个选项，每个选项可能包含多个效果（例如，失去生命的同时，获得星币），也有可能出现概率事件（例如赢下或者输掉赌博）~~
 
-The event structure is as follow:
+禁止套娃，直接看树状图好了。一般事件结构如下：
 ```
-└─Event, indicated by EventGroup (Eg. gambling event)
-    └─Event Page, indicated by ID (Eg. in one bet, bet 5 coins or leave)
-        └─Option, each line is an option. (Eg. bet 5 coins)
-            ├─ScriptGroup (lose 5 coins)
-            │   └─Script (lose 5 coins)
-            └─ScriptGroup (win 10 coins or lose the bet)
-                ├─Script (50%: close the event)
-                └─Script (50%: win 10 coins, go next page)
+└─完整事件, 由EventGroup确定，例如赌场事件
+    └─选择界面, 由ID确定 (例如一次赌博中，选择赌5毛或者不赌)
+        └─选项(Option), 表中每一行是一个选项. (例如赌5毛)
+            ├─效果组(ScriptGroup) (支付5毛)
+            │   └─效果(Script) (支付5毛)
+            └─效果组 (赢或者输)
+                ├─效果 (50%: 输了，一毛都没有，事件结束)
+                └─效果 (50%: 赢了，单车变摩托，进入下一个选择界面)
 ```
 
-Fields exclusive to this item:
+结合上面的树状图来看这件物品独占的参数：
 
-- ID: Options on a same **event page** should have the same ID.
-- EventGroup: Options of a same **full event** should have the same EventGroup.
-- Days: Days spent on this event. 0 if this is a special event. (Call for support or reward event)
-- EnterType: Set this field to 1 if this is a bad event (as a result of the previous choice). This is optional.
-    - Have a special effect upon entering. 
-    - Usually used in a bad roll when event involves probability. (Eg. failure in a gamble, HP lose on a risky attempt)
-- Tags: The event type to display on vacation choice screen. Each vacation event should has at least 1 tag.
-    - 1: Units
-    - 2: Treasures
-    - 3: Star Coins
-    - 4: Upgrade
-    - 5: Load Limit (Not used)
-    - 6: Energy Source
-    - 7: Repair
-    - 8: Shop
-    - 9: Shield
-    - 10: Modification
-    - 11: Fuel
-    - 12: Swap
-    - 13: End Vacation (Not used)
-- RaceSpecial: This option is exclusive to a race.
-    - 1: Human
-    - 2: Mech
-    - 3: Beastkin
-    - 4: Treant
-- OptionDes/OptionDes_: Description of this option.
-- OptionScript1-3: Class name of this script
-- Args1-3: Arguments of this script.
-- Weight1-3: Chances of this script to be chosen in a  ScriptGroup.
-- Group1-3: Which ScriptGroup this script belongs to. 
-    - Exactly 1 script of each ScriptGroup will be executed
-    - Eg: if there are 3 scripts: S1 (Group1 = 1), S2 (Group2 = 2, Weight2 = 40), and S3 (Group3 = 2, Weight3 = 60), then S1 will be executed first, then SB (40%) or SC (60%) will be executed.
-- Jump1-3: Jumps to a new page when this script finishes. 
-    - If left empty, end this event.
-    - If multiple scripts are executed, the last non-empty jump will take effect.
-    - Some scripts may have multiple Jump targets. (Eg. when trading a Unit for star coins, if cancelled at the unit choice screen, will jump to a different page, offering no star coins and showing a different description.) 
-    - The jump target can also be controlled with code by setting `option.jumpID`.
+- ID: 出现在同一个选择界面的所有选项，其ID必须相同
+- EventGroup: 出现在同一个完整事件中的所有选项，其EventGroup必须相同
+- Days: 这个事件所花费的天数。特殊事件（例如呼叫支援和出现在战斗后的奖励事件）的天数应设为0（影响计划书的触发）
+- EnterType: 可选的。如果设为1，将此事件标记为坏事件
+    - 进入坏事件时有一个很显眼的红色特效。~~然鹅并没有多少人注意到~~
+    - 通常是随机到了坏结果（例如赌输了，或者赌掉血了）
+- Tags: 事件的标签，一般来说至少有一个标签，也有可能有多个
+    - 1: 部件
+    - 2: 宝物
+    - 3: 星币
+    - 4: 升级
+    - 5: 负载（废案，现在没有）
+    - 6: 能量原料
+    - 7: 维修
+    - 8: 商店
+    - 9: 护盾
+    - 10: 改造
+    - 11: 燃料
+    - 12: 换位
+    - 13: 结束假期（废案，现在没有）
+- RaceSpecial: 这个事件是种族专属事件。
+    - 1: 人类
+    - 2: 智械
+    - 3: 兽族
+    - 4: 树人
+- OptionDes/OptionDes_: 选项的描述
+- OptionScript1-3: 效果的类名
+- Args1-3: 效果的参数
+- Weight1-3: 这个效果在其所在的效果组内被选中的概率
+- Group1-3: 这个效果所属的效果组 
+    - 每个效果组中的一个效果会被执行
+    - 例如有三个效果：
+        - S1 (Group1 = 1)
+        - S2 (Group2 = 2, Weight2 = 40)
+        - S3 (Group3 = 2, Weight3 = 60)
+    - 那么S1会最先触发，然后SB (40%) 和 SC (60%) 二选一触发一个。
+- Jump1-3: 这个效果结束时跳转到新的页面
+    - 遵循[ID命名法](ShipUnit.md#IDNaming)，甚至可以跳到其他模组的事件
+    - 如果为空，则结束事件
+    - 如果一个选项触发了多个效果，那么最后一个非空的Jump生效
+    - 有些效果可能自带多个Jump，例如移除一个部件获得星币时，如果打开对话框后点左下角取消了，就会跳转到另一个页面。~~不仅不给钱还有可能有特殊文本来嘲讽你。~~
+    - 也可以用代码修改`option.jumpID`来跳转到任意页面
 
-### Writing your own scripts
+### 实现自定义效果
 
-Inherit the `OptionContent` Class and implement the  following functions:
+继承`OptionContent`类并实现以下几个方法中的一个或多个
 
-- `OnOptionInit`: Process description text, lock the reward, hide this option, etc. 
-- `Check`: Check preconditions of this option. Return false to disable this option. (Eg. when you have not enough star coins to pay)
-- `Do`: Execute this script.
+- `OnOptionInit`: 预处理描述文本，替换占位符，锁定奖励，隐藏某些选项等
+- `Check`: 检查条件，如果不满足则返回false来禁用选项按钮。(例如：没钱买不起的时候)
+- `Do`: 执行效果
 
-If you have correctly extracted the game files in [Getting Started](Start_EN.md#disassemble-the-game-optional), there are many examples that will help you design your events. Note that the field types of extracted csv file are slightly different from that of TutorialMod. (Eg. ID in vanilla game is int instead of string) Please use TutorialMod's version.
+如果你遵照[基础教程](Start.md#disassemble-the-game-optional)正确提取了游戏文件，有很多示例帮助你定制自己的事件。注意提取的游戏文件中，有些内容的数据类型跟TutorialMod的略有差异，这是因为游戏对模组进行了适配。请以TutorialMod的为准。
 
-### Turning an event into a Call for Support
+### 将事件变为呼叫支援
 
-Similar to adding contents like events or treasures.
+和添加宝物或部件类似，填一张表即可。
 
-- File: Content/BountyEvents.csv
-- Example: Gamble
-- Sprite Size: 50x50
+- 文件: Content/BountyEvents.csv
+- 例子: Gamble
+- 图片大小: 50x50
 
-The ID of the Call for Support should be identical to that of the event entrance.
+呼叫支援的ID应该和事件的ID相同。
 
-### Notes on Events
-- All events should include a safe exit to prevent looping and no choice situations.
-- Call for support events and reward events should cost 0 days and mark InGame to `FALSE`. Vacation events should cost 2, 3, or 4 days.
-- When call for support events finishes, use `OC_SetBountyFinished` to consume the support chance and trigger treasure abilities.
-- Call for support events should have an option to exit the event without consuming the chance and also without any side effects. (i.e. to exit without calling `OC_SetBountyFinished`)
-- As a result of UI arrangement, each event page can only have at most 6 options (including hidden options) or 5 shown options (including disabled options).
+### 事件的注意事项
+- 所有事件都应该有一个安全退出的路线，避免出现死路或者死循环。
+- 呼叫支援和特殊事件应该把InGame设为`FALSE`，Days设为0。度假事件应该消耗2，3或4天
+- 呼叫支援结束时，使用`OC_SetBountyFinished`效果消耗支援次数并触发宝物效果。
+- 按照惯例，呼叫支援应该包含一个不消耗次数的退出选项，避免玩家手滑点错了被迫开支援。也就是说有一个选项不调用`OC_SetBountyFinished`直接退出。
+- 由于UI的限制，每个选择界面最多只能有6个选项（包括隐藏的选项），其中最多只能有5个显示（包括变灰的选项）
 
-## Pilots <a id="Pilots"></a>
+## 驾驶员 <a id="Pilots"></a>
 
-- File: Content/Pilot.csv
-- Example ID: Pip
-- Sprite Size: 512x512
+- 文件: Content/Pilot.csv
+- 示例: 皮皮
+- 图片大小: 512x512
 
-Fields exclusive to this item:
-- PilotTitle/PilotTitle_ & PilotName/PilotName_: Two parts of this pilot's name.
-- Race: race of this pilot.
-    - 0: Human
-    - 1: Mech
-    - 2: Beastkin
-    - 3: Treant
-    - 9: All
-- Talent: Inherent talent of this pilot. Can be a talent in  vanilla game (numerical), from another mod (`<ModID>.<TalentID>`), or in your mod (otherwise).
-- RandomSlotNum: This pilot is spawned with that many random talents. 
-- Remark: Remark of this pilot's talent, or write anything you like. Has no effect.
-- PilotMonologue: Controls the talking behavior of this pilot.
-    - To create monologue, inherit the `PilotMono` class and write code on when and what to speak.
-    - PilotMono acts very much like a treasure. The difference is its event listeners are added manually instead of automatically.
-    - Examples see `PM_<PilotID>` (Eg. `PM_10000`) in [extracted game files](Start_EN.md#disassemble-the-game-optional).
-    - If left blank, there will be no talking at all.
+这件物品独占的参数：
+- PilotTitle/PilotTitle_ & PilotName/PilotName_: 这个驾驶员的称号和名字
+- Race: 这个驾驶员的种族（注意这里的数字比专属事件中的数字少1）
+    - 0: 人类
+    - 1: 智械
+    - 2: 兽族
+    - 3: 树人
+    - 9: 全部
+- Talent: 这个驾驶员的固有天赋
+    - 遵循ID命名法，也可以指定其他mod的内容。
+- RandomSlotNum: 这个驾驶员生成时拥有这么多个随机天赋（一般是2个）
+- Remark: 注释，可以写固有天赋的效果。没有实际作用
+- PilotMonologue: 驾驶员对话的类名
+    - 继承`PilotMono`类，然后编写何时何地触发何种对话
+    - 驾驶员对话和宝物技能很类似，不过它们需要手动安装监听器(listeners)
+    - 如果你正确[提取游戏文件](Start.md#disassemble-the-game-optional)了的话，里面有很多形如`PM_<PilotID>`的示例 (例如`PM_10000`)
+    - 如果留空，则没有驾驶员对话。

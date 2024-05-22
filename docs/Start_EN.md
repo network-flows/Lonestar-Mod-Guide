@@ -1,5 +1,7 @@
 # Getting Started
 
+[简体中文](Start.md) English
+
 This page tells you the file structure of your mod, and introduces the tools you may need to create your mod. A template mod can be found in `TutorialMod`.
 
 Note that you don't necessarily need any coding in your mod, although some advanced features are only possible if you have C# knowledge. 
@@ -16,7 +18,7 @@ Note that you don't necessarily need any coding in your mod, although some advan
 - Modify game logic (Involves code)
 
 ## Disassemble the game (Optional)
-If your mod involves code, you may need to disassemble the game first. There are tools that help you do this job. You can extract game assets with AssetRipper ([Link](https://github.com/AssetRipper/AssetRipper/releases)) and view code with Dnspy ([Link](https://github.com/dnSpy/dnSpy/releases)).
+If you need game assets or want to inspect game code, you may need to disassemble the game first. There are tools that help you on this. You can extract game assets with AssetRipper ([Link](https://github.com/AssetRipper/AssetRipper/releases)) and view code with Dnspy ([Link](https://github.com/dnSpy/dnSpy/releases)).
 
 In AssetRipper: File > Open Folder > Select `LONESTAR` directory (Find the path in Steam, as shown in the picture below)
 
@@ -24,7 +26,7 @@ In AssetRipper: File > Open Folder > Select `LONESTAR` directory (Find the path 
 
 Then Export > Export All Files, and you get the assets of LoneStar.
 
-Some folders that may help in your make your mod:
+Some folders that may help in modding:
 ```
 └─ExportedProject
     └─Assets
@@ -42,7 +44,11 @@ Dnspy won't extract game assets, but it supports code searching and game logic m
 
 
 ## Mod Structure
-All mods are located in (Windows: `%USERPROFILE%/AppData/LocalLow/Shuxi/LONESTAR/Save`) or (MAC: `~/Library/Application Support/Shuxi/LONESTAR/Mods`) 
+All mods are located in 
+- Windows: `%USERPROFILE%/AppData/LocalLow/Shuxi/LONESTAR/Save`
+- MAC: `~/Library/Application Support/Shuxi/LONESTAR/Mods`
+
+The file structure of Mods directory:
 ```
 └─Mods
     ├─Dev  // mods in development, always active
@@ -76,7 +82,7 @@ The structure of a Lonestar mod: (Take TutorialMod for example):
 Note that everything except `mod.json` is optional. If your mod contains no animations or images, it's OK to remove corresponding directories.
 
 ## mod.json
-Start your mod by creating a folder in `Dev` and placing `mod.json` into it. This file contains the information about your mod, and is the only necessary file of your mod. A `mod.json` looks like this: 
+Start your mod by creating a subfolder in `Dev` and placing `mod.json` into the **sub**folder. This file contains the information about your mod, and is the only necessary file of your mod. A `mod.json` looks like this: 
 
 ```
 {
@@ -84,17 +90,17 @@ Start your mod by creating a folder in `Dev` and placing `mod.json` into it. Thi
     "displayName" : "Tutorial Mod",
     "description" : "Template and Tutorial Mod for LoneStar",
     "version" : "1.0.0",
-    "author" : ""
+    "author" : "pip"
 }
 ```
 
 - modID: (Necessary) ID of your mod, must be unique. 
 - displayName: (Optional) Name displayed on the mod screen.
-- description: (Optional) Description displayed on the mod screen.
+- description: (Optional) Description displayed in workshop.
 - version: (Optional) Version displayed on the mod screen.
 - author: (Optional) Author displayed on the mod screen.
 
-If multiple mods with the same modID are detected, only the first is used. Note that mods load in the order Dev > Steam > Local. So if you have a dev mod, it will override any Steam mod of the same modID.
+If multiple mods with the same modID are detected, only the first is used. Note that mods load in the order Dev > Steam > Local. So if you have a dev mod, it will override its Steam version.
 
 ## Testing your mod
 There are tools that help you debug your mods, like [BepInEx](https://github.com/BepInEx/BepInEx) or [UnityExplorer](https://github.com/sinai-dev/UnityExplorer). They are available in Github.
@@ -106,4 +112,4 @@ Publish your mod by pressing the update button in Mod page. It's advised to incl
 
 If this is your first time to upload a mod, that should direct you to an agreement page of Steam.
 
-Sometimes the workshop mods are not updated in time. So it's better to make bigger updates in less frequency. Also, updating the version number will help players identify whether their mod is up-to-date.
+Sometimes the workshop mods are not updated in time. So it's better to make bigger updates in less frequency. Also, updating the version number and adding a github link to description will help players identify whether their mod is up-to-date.

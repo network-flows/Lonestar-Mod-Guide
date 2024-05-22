@@ -1,10 +1,12 @@
 # Unit
 
+[简体中文](ShipUnit.md) English
+
 This page tells you how to add new units or modify existing units in your mod. All the steps can be found in `TutorialMod`.
 
 ## Example A: Starting from a Basic Core
 
-Add `ShipUnit.csv` to `Content` directory. As seen in the file structure below.
+Add `ShipUnit.csv` to `Content` directory. As shown in the file structure below.
 
 ```
 └─TutorialMod
@@ -18,7 +20,7 @@ Add `ShipUnit.csv` to `Content` directory. As seen in the file structure below.
 
 Each line in `ShipUnit.csv` represents a new Unit you add. It's advised to use csv editors like MS Excel instead of plain text editors like notepad. However, some csv editors may cause encoding issues. If you encounter any encoding issues, try change the encoding to UTF-8.
 
-Create your first unit by copying 2 rows of `unitA` in `TutorialMod``. Each row represents a level of a unit. This unit does nothing, but we can add more things later.
+Create your first unit by copying 2 rows of `unitA` in `TutorialMod`. Each row represents a level of a unit. This unit does nothing, but we can add more things later.
 
 ![UnitA.png](../images/UnitA.png)
 
@@ -28,7 +30,7 @@ Note: LoneStar uses the combination of `ID` and `modID` to identify an item. Tha
 
 ![UnitB.png](../images/UnitB.png)
 
-`unitB` is a unit with translated texts. You may notice that some string fields have two versions. Take `Name` for example: you may leave `Name` blank and fill in `Name_` to set your Unit name for all languages (see `unitA`), or set `Name` and add translation to each language respectively (See `unitB`). See Translation part for more info.
+`unitB` is a unit with translated texts. You may notice that some string fields have two versions. Take `Name` for example: you may leave `Name` blank and fill in `Name_` to set your Unit name for all languages (see `unitA`), or set `Name` and add translation to each language respectively (See `unitB`). See [Translation](Translation_EN.md) part for more info.
 
 ![UnitB_2.png](../images/UnitB_2.png)
 
@@ -66,17 +68,21 @@ You may also play a different animation when an event triggers. The `Skill_Anima
 
 ![UnitD.gif](../images/UnitD.gif)
 
+## Notes on Additional Data
+
+Vanilla game has no cross-battle growth units like Ritual Dagger in STS. If you want to store variables cross-combat (like growth counter), you may store data in `UnitData.args`
+
 ## Modifying existing units
 
-You may modify existing units with code. Eg. The following line makes Quadra Burst Cores require only 3 energy in hand instead of 4 **until game exits**.
+You may modify existing units with code. Eg. The following line makes Quadra Burst Cores (Lv 1) require only 3 energy in hand instead of 4 **until game exits**.
 ```
 DataShipUnitManager.Instance().GetDataByID(11004).Args[0] = 3;
 ```
 
-This disables Equipping Machine until game exits. (Don't remove vanilla units from database, as it may corrupt some save files. Disable them instead. Modded units can be removed without risk, though.)
+This disables Equipping Machine of all levels until game exits. (Don't remove vanilla units from database, as it may corrupt save files. Disable them instead. Modded units can be removed without risk, though.)
 
 ```
-DataShipUnitManager.Instance().GetDataByID(21849).InGame = false;
+DataShipUnitManager.Instance().GetDataListByID(21849).ForEach(data => { data.InGame = false; });
 ```
 
 ## Detailed Explanation of Each Field

@@ -1,5 +1,7 @@
 .vscode
 .vs
+TutorialMod/config.json
+Loadout/config.json
 TutorialMod_code/bin
 TutorialMod_code/lib
 TutorialMod_code/obj

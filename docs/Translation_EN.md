@@ -1,5 +1,7 @@
 # Translation
 
+[简体中文](Translation.md) English
+
 This page tells you how to add translations to your mod. All the steps can be found in `TutorialMod`.
 
 ## File Structure
@@ -19,7 +21,7 @@ Let's begin with the file structure in TutorialMod.
     │       └─Translation.csv
     └─...(Other Files)
 ```          
-The translation files are located in the `Translation` directory. Each subdirectory represents a different language. Lonestar supports two languages: `English` and `ChineseSimplified`, you may also add new languages later on. 
+Translation files are located in the `Translation` directory. Each subdirectory represents a different language. Lonestar supports two languages: `English` and `ChineseSimplified`, you may also add new languages later on. 
 
 Each subdirectory may have one or multiple `.csv` files, each implementing part of the translations for the corresponding language. The name of the `.csv` file has no effect besides helping you distinguish their content.
 
@@ -48,11 +50,11 @@ or the general format:
 LanguageCommon/<LanguageID>;"<LanguageDisplayName>"
 ```
 
-The above line tells Lonestar to add that language to the language selection dropdown. Where `<LanguageID>` should be identical to the directory name you just created. **Run Lonestar** and the new language is found in the settings screen.
+The above line tells Lonestar to add that language to the language selection dropdown. Where `<LanguageID>` should be identical to the directory name you just created. **Run Lonestar** and the new language should appear in the settings screen.
 
 ![Translation1](../images/Translation1.png)
 
-After running the game, Lonestar creates a directory named `TranslationAutoComplete` in the `Mods/Dev` directory, which contains lists of missing translation texts. The next step is to translate the texts from English to your new language and **add them to your `.csv` files**. (Modifying files in `TranslationAutoComplete` has no effect. They will refresh every time you launch the game.) 
+After running the game, Lonestar creates a directory named `TranslationAutoComplete` in `Mods/Dev`, which contains lists of missing translation texts. The next step is to translate the texts from English to your new language and **add them to your `.csv` files**. (Modifying files in `TranslationAutoComplete` has no effect. They will refresh every time you launch the game.) 
 
 It's OK if you don't fully implement your language, but it's recommended to do so. Since any untranslated text will fallback to English during runtime. 
 

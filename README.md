@@ -1,15 +1,13 @@
-# Lonestar-Mod-Guide
-Modding guide for Lonestar ([Steam Link](https://store.steampowered.com/app/2056210/_/), [Discord Link](https://discord.gg/QH4xj9pY)).
+# 孤星猎人模组教程
 
-Articles:
+简体中文 [English](README_en.md)
 
-[Getting Started](docs/Start_EN.md)
+一个简单的《孤星猎人》模组教程 ([Steam链接](https://store.steampowered.com/app/2056210/_/), 官方QQ群：211058438).
 
-[Translation](docs/Translation_EN.md)
+教程列表:
 
-[Units](docs/ShipUnit_EN.md)
-
-[Other Content](docs/Content.md)
-
-[Patching](docs/Patch_EN.md)
-
+- [基础教程](docs/Start.md)
+- [翻译教程](docs/Translation.md)
+- [添加部件](docs/ShipUnit.md)
+- [添加其他内容](docs/Content.md)
+- [补丁教程](docs/Patch.md)
