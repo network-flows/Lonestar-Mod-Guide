@@ -110,6 +110,8 @@ Also there is a mod `loadout` ([link](../Loadout)) that may help you debug your 
 ## Publish your mod
 Publish your mod by pressing the update button in Mod page. It's advised to include a `preview.png` that is shown on the workshop page. 
 
+If you want to upload multiple preview images or short videos, you can directly edit in your workshop page after the first time you upload your mod. In that case, don't create `preview.png`, or it will override the changes you made in the workshop page. Similarly, if you feel inconvenient to edit long descriptions in `mod.json`, you can leave `description` field empty and edit it directly in your workshop page.
+
 If this is your first time to upload a mod, that should direct you to an agreement page of Steam.
 
 Sometimes the workshop mods are not updated in time. So it's better to make bigger updates in less frequency. Also, updating the version number and adding a github link to description will help players identify whether their mod is up-to-date.
