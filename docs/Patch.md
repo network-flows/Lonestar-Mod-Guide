@@ -97,7 +97,7 @@ public class TutorialMod : UserMod
         public string stringField = "default value";
         ...
     }
-    public TutorialModConfig config = new TutorialModConfig();
+    public static TutorialModConfig config = new TutorialModConfig();
     ...
 }
 ```
