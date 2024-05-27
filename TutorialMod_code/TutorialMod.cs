@@ -28,7 +28,7 @@ namespace TutorialMod
             [ChoiceField(new string[] {"A", "B", "C", "D"}, "Choice field", "Choice Tooltip")]
             public string choice;
         }
-        public TutorialModConfig config = new TutorialModConfig();
+        public static TutorialModConfig config = new TutorialModConfig();
         public override void OnLoad()
         {
             base.OnLoad();

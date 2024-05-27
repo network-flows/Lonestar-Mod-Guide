@@ -42,7 +42,7 @@
 ## 宝物 <a id="Treasures"></a>
 
 - 文件: Content/Treasure.csv
-- 示例: 火神炮
+- 示例: 火神炮 | Vulcan
 - 图片大小: 120x120
 
 这件物品独占的参数：
@@ -65,7 +65,7 @@
 ## 突发情况（战斗事件）<a id="BattleEvents"></a>
 
 - 文件: Content/BattleEvent.csv
-- 示例: 陀螺雨
+- 示例: 陀螺雨 | TopRain
 - 图像大小: 128x128. 
     - 图片是白色透明底的，最好用PS等工具编辑
     - 在展示的时候，图片的四角是被切掉的（如图），实际展示区域是一个八边形。
@@ -79,7 +79,7 @@
 ![battleEvent2.png](../images/battleEvent2_zh.png)
 
 - BanEnemyIDs: 对战这些敌人时，这个战斗事件不会出现
-    - 遵循[ID命名法](ShipUnit.md#IDNaming)，也可以指定其他mod的内容。
+    - 遵循[ID命名法](ShipUnit.md#IDNaming)，也可以指定其他mod的敌船。
     - 例如：对战炸弹号（ID = 511）时移除陀螺雨，避免让对面显得很呆
 - BanPhases: 在对战这些序号的敌人时，这个战斗事件不会出现
     - 从0开始到11结束，例如0是第一幕第一个爪牙，10是第三幕精英
@@ -89,7 +89,7 @@
 ## 天赋 <a id="Talents"></a>
 
 - 文件: Content/Talent.csv
-- 示例: 贪婪
+- 示例: 多多益善 | CoinGain
 - 图像大小: 100x100
 
 这件物品独占的参数：
@@ -105,7 +105,7 @@
 ## 关键词及增益效果 <a id="Keywords"></a>
 
 - 文件: Content/Keyword.csv
-- 示例: 亡语 (只是示例，并没有正确实现)
+- 示例: 亡语 | Deathrattle (只是示例，并没有正确实现)
 - 图像大小: 40x40
 
 这件物品独占的参数：
@@ -129,7 +129,7 @@
 ## 事件及呼叫支援  <a id="Events"></a>
 
 - 文件: Content/EncounterEvents.csv
-- 示例: Gamble
+- 示例: 赌场下注 | Gamble
 
 ~~一个大事件可能包含多个选择页面（例如选完一个选项跳转到下一个选择页面），每个选择页面可能包含多个选项，每个选项可能包含多个效果（例如，失去生命的同时，获得星币），也有可能出现概率事件（例如赢下或者输掉赌博）~~
 
@@ -220,8 +220,8 @@
 ## 驾驶员 <a id="Pilots"></a>
 
 - 文件: Content/Pilot.csv
-- 示例: 皮皮
-- 图片大小: 512x512
+- 示例: 皮皮 | Pip
+- 图像大小: 512x512
 
 这件物品独占的参数：
 - PilotTitle/PilotTitle_ & PilotName/PilotName_: 这个驾驶员的称号和名字

@@ -6,7 +6,7 @@
 
 值得一提的是，编写模组不需要任何编程技术，不过如果你懂一些C#的话，就能制作出更酷炫的效果。
 
-## 哪些可以被做进模组
+## 哪些东西可以被做进模组
 - 添加新语言及翻译（无需代码）
 - 添加新内容（部分需要代码）
     - 部件，天赋，驾驶员等
@@ -41,7 +41,6 @@ AssetRipper使用方法: File > Open Folder > 选择 `LONESTAR` 文件夹（在s
 Dnspy使用方法: File > Open > 选择 `LONESTAR/LONESTAR_Data/Managed/Assembly-CSharp.dll` (`LONESTAR`文件夹用上面提到的方法查找)
 
 Dnspy 不能提取资源文件，但它能查阅和修改代码，可能会很有帮助。
-
 
 ## 模组结构
 所有模组都位于以下地址：
