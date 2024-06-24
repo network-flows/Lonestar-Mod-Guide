@@ -22,7 +22,7 @@ The following checked items can be easily added to your mod with csv (similar to
 ## Common fields
 These are common fields that most types of contents share.
 
-- ID: String. Must be unique in your mod.
+- ID: Must be unique in your mod.
 - Name/Name_: Display name of this item.
 - UnlockLV: 
     - In most cases: Association Lv required to enable this item. (0-70)
@@ -62,7 +62,7 @@ Fields exclusive to this item:
     - If in the format: `<ModID>.<TalentID>`, refers to a talent in another mod;
     - Otherwise: refers to a talent in this mod.
 - Genera: Categorize some treasures to smaller groups for tag searching. 
-- BattleRelate: Deprecated. Has no effect.
+- BattleRelate: Whether this is related to battle. (There is an option to hide battle-irrelevant treasures during battles.)
 - AddIn: This treasure is disabled until you finish the first Xth galaxy. If set to 0, available from the start.
 - RemoveOut: This treasure is disabled when you finish the Xth galaxy. If set to 0, available till the end.
 
