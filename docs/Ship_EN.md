@@ -82,6 +82,8 @@ The size of ship board must fit in the size of units. A unit or a grid is 100\*1
 
 ![Board.png](../images/Board.png)
 
+(Optional) If you set new appearance for boss enemies, you can add a cool icon to display on the winning screen. The filename should be identical to Image but end with `_icon`. (Eg, if Image is Path/Test.png, then icon is Path/Test_icon.png) preferred icon size is 180\*180 pixels.
+
 ### Animations and Components
 
 You can configure animation with ModPath field. Add a json file in `ShipData` folder and copy its name to the ModPath field in the csv file.

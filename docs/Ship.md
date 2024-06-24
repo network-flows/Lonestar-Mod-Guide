@@ -82,6 +82,8 @@ Image是飞船的静态图片。
 
 ![Board_zh.png](../images/Board_zh.png)
 
+（可选）如果你给boss敌人设置了自定义外观的话，可以给boss设计一个图标，用于在胜利结算页面显示。这个图标的文件名以`_icon`结尾。例如Image设置为 Path/Test.png 的话，则图标为 Path/Test_icon.png。推荐大小为180\*180像素。
+
 ### 动画和预设组件<a id="anim"></a>
 
 你可以在表格中的`ModPath`列设置动画。在`ShipData`文件夹中添加一个json文件，然后将文件名填入CSV表格的`ModPath`列。
