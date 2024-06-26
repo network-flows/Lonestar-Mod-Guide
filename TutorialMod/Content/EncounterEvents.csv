@@ -1,6 +1,6 @@
 ID,EventGroup,Name,Name_,UnlockLV,Days,InGame,Pros,EnterType,Des,Des_,Tags,WeightOffset,RaceSpecial,OptionDes,OptionDes_,OptionScript1,Args1,Weight1,Group1,Jump1,OptionScript2,Args2,Weight2,Group2,Jump2,OptionScript3,Args3,Weight3,Group3,Jump3,PilotBanList
 string,string,string,string,int,int,bool,string[],int,string,string,int[],int,int,string,string,string,int[],int,int,string[],string,int[],int,int,string[],string,int[],int,int,string[],string[]
-Gamble,Gamble,EventName/1890,,0,0,FALSE,;7;;77;;;,,EventDes/1890,(Enter the casino),;3;;;,-50,,EvenOptionDes/1890_1,(Start the gambling),OC_StarCoin,;5;;;,,,Gamble1,,,,,,,,,,,
+Gamble,Gamble,EventName/1890,,0,0,,;7;;77;;;,,EventDes/1890,(Enter the casino),;3;;;,-50,,EvenOptionDes/1890_1,(Start the gambling),OC_StarCoin,;5;;;,,,Gamble1,,,,,,,,,,,
 Gamble,Gamble,EventName/1890,,,,,,,,,,,,EvenOptionDes/Refuse,"(Refuse, not consuming the chance)",OC_Close,,,,GambleL,,,,,,,,,,,
 Gamble1,Gamble,EventName/1890,,,,,,,EventDes/1891,(Fisrt round),,,,EvenOptionDes/1890_2,(First round bet),OC_StarCoinLose,;5;;;,,1,,OC_StarCoin,;10;;;,50,2,Gamble2,OC_Close,,50,2,Gamble1F,
 Gamble1,Gamble,EventName/1890,,,,,,,,,,,,EvenOptionDes/1890_3,(First round leave),OC_Close,,,,Gamble1L,,,,,,,,,,,

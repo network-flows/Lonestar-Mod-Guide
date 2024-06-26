@@ -1,0 +1,3 @@
+ID,Name,Name_,UnlockLV,Des,Des_,HP,ShipType,ShipTypeProperty,Move,ShipDataPath,PowerCoreWeight,PowerColorWeight,BountyEvents,TalentResultSlot,ModPath,VacationShipImage,MovePath,InGame,Image,ButtonIcon,ShadowSprite
+int,string,string,int,string,string,int,void,void,int,string,int[],int[],string[],void,string,string,void,bool,string,string,void
+Tiny,@/Name/Tiny,,0,@/Des/Tiny,,24,,,3,Tiny.json,;1;;1;;1;;1;;1;;;,;3;;2;;1;;;,;100;;140;;;,,TinyShipMod.json,Tiny.png,,,Tiny.png,Tiny.png,

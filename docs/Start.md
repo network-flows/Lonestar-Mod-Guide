@@ -73,6 +73,7 @@ Dnspy 不能提取资源文件，但它能查阅和修改代码，可能会很�
     │   ├─English
     │   ├─ChineseSimplified
     │   └─CustomLanguage
+    ├─ShipData  // 飞船信息
     ├─mod.json  // 模组的重要信息
     ├─preview.png  // 创意工坊中显示的封面图片
     └─TutorialMod.dll  // 包含模组代码的DLL文件

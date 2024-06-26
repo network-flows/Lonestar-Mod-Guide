@@ -74,6 +74,7 @@ The structure of a Lonestar mod: (Take TutorialMod for example):
     │   ├─English
     │   ├─ChineseSimplified
     │   └─CustomLanguage
+    ├─ShipData  // Ship info
     ├─mod.json  // Important info of the mod
     ├─preview.png  // Preview image shown in workshop
     └─TutorialMod.dll  // Built from code

@@ -1,5 +1,6 @@
 {
     "modID" : "Loadout",
     "displayName" : "Loadout",
+    "version" : "1.0.0",
     "description" : "Console Mod for LoneStar"
 }

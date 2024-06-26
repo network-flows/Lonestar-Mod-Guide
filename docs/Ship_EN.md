@@ -149,7 +149,8 @@ Add a json file in `ShipData` folder and copy its name to `ShipDataPath` field i
         - "2, 3, 44" means this unit will load Energy 2, 3, and a pair of 4 on turn 1, 2, and 3 respectively. Then repeat.
         - Use "OBW" to specify Energy color. Default color is Orange if not specified.
         - "2W3, " means this unit will load an Orange 2 and **W**hite 3 on odd-numbered turns.
-        - "B1WO1U" means this unit will load **B**lue 1, [**W**hite+**O**range 1], and **U**se its Activate ability every turn.
+        - "B1O1U" means this unit will load **B**lue 1, [**O**range 1], and **U**se its Activate ability every turn.
+        - Does NOT support energy of multiple colors. To load those energy, use a controller or assign an auto-load unit ability.
     - See `ShipData/Locker.json` in TutorialMod for example.
 - moves: a string of **U**p, **S**top, and **D**own, marking the move direction of enemy ship at each turn.
     - Eg. "USSDSS" means the ship will go up at turn 1, stop at turn 2 and 3, go down at turn 4, stop at turn 5 and 6, then repeat.

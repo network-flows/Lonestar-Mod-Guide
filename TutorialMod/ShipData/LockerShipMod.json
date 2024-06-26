@@ -1,0 +1,47 @@
+{
+    "components": [
+        {
+            "type": "jet_fire",
+            "pos" : {"x": 542, "y": 270}, 
+            "norm": {"x": 1, "y": 0}
+        },
+        {
+            "type": "jet_fire",
+            "pos" : {"x": 542, "y": 430}, 
+            "norm": {"x": 1, "y": 0}
+        },
+        {
+            "type": "movingtrailspot",
+            "pos" : {"x": 105, "y": 185}
+        },
+        {
+            "type": "movingtrailspot",
+            "pos" : {"x": 105, "y": 515}
+        },
+        {
+            "type": "movingtrailspot",
+            "pos" : {"x": 518, "y": 176}
+        },
+        {
+            "type": "movingtrailspot",
+            "pos" : {"x": 518, "y": 524}
+        },
+        {
+            "type": "laser",
+            "pos": {"x": 140, "y": 250}
+        },
+        {
+            "type": "laser",
+            "pos": {"x": 130, "y": 350}
+        },
+        {
+            "type": "laser",
+            "pos": {"x": 140, "y": 450}
+        },
+        {
+            "type": "center",
+            "pos": {"x": 400, "y": 350}
+        }
+    ],
+    "laser": "LaserFogPurple"
+}

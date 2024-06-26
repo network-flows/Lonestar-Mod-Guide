@@ -1,0 +1,42 @@
+{
+    "components": [
+        {
+            "type": "jet_fire",
+            "pos" : {"x": 467.7, "y": 350}, 
+            "norm": {"x": 1, "y": 0}
+        },
+        {
+            "type": "movingtrailspot",
+            "pos" : {"x": 300, "y": 212}
+        },
+        {
+            "type": "movingtrailspot",
+            "pos" : {"x": 460, "y": 488}
+        },
+        {
+            "type": "movingtrailspot",
+            "pos" : {"x": 460, "y": 212}
+        },
+        {
+            "type": "movingtrailspot",
+            "pos" : {"x": 300, "y": 488}
+        },
+        {
+            "type": "movingtrail",
+            "pos" : {"x": 300, "y": 488}
+        },
+        {
+            "type": "movingtrail",
+            "pos" : {"x": 300, "y": 212}
+        },
+        {
+            "type": "laser",
+            "pos": {"x": 144, "y": 350}
+        },
+        {
+            "type": "center",
+            "pos": {"x": 350, "y": 350}
+        }
+    ],
+    "laser": "LaserPurpleLight"
+}
