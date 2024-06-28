@@ -12,8 +12,7 @@
 - [x] [宝物](#Treasures)
 - [x] [天赋](#Talents)
 - [x] [驾驶员](#Pilots)
-- [ ] 玩家飞船
-- [ ] 敌方飞船
+- [x] [玩家/敌方飞船](Ship.md)
 - [x] [突发情况](#BattleEvents)
 - [x] [关键词及增益](#Keywords)
 - [x] [事件及呼叫支援](#Events)

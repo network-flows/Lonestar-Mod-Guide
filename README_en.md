@@ -4,11 +4,14 @@
 
 Modding guide for Lonestar ([Steam Link](https://store.steampowered.com/app/2056210/_/), [Discord Link](https://discord.gg/QH4xj9pY)).
 
+Feel free to post issues if you encounter any problems!
+
 Articles:
 
 - [Getting Started](docs/Start_EN.md)
 - [Translation](docs/Translation_EN.md)
 - [Units](docs/ShipUnit_EN.md)
 - [Other Content](docs/Content_EN.md)
+- [Ships](docs/Ship.md)
 - [Patching](docs/Patch_EN.md)
 
