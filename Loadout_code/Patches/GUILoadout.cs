@@ -93,7 +93,7 @@ namespace Loadout
                     _ => LeanLocalization.GetTranslationText("Loadout/Copy"),
                 };
                 string s1 = itemID != null ? LeanLocalization.GetTranslationText("Loadout/CopyQ") + $"[Q]: {itemID}\n" : "";
-                string s2 = skillName != null ? LeanLocalization.GetTranslationText("Loadout/CopyW") + $"[W]: {skillName}\n" : "";
+                string s2 = skillName != null ? LeanLocalization.GetTranslationText("Loadout/CopyW") + $"[W]: {FilePath.GetNameWithPath(skillName)}\n" : "";
                 string s3 = imageName != null ? LeanLocalization.GetTranslationText("Loadout/CopyE") + $"[E]: {imageName}\n" : "";
                 string s4 = animationName != null ? LeanLocalization.GetTranslationText("Loadout/CopyR") + $"[R]: {animationName}\n" : "";
                 if (itemID == null && skillName == null && imageName == null && animationName == null) s0 = "";
