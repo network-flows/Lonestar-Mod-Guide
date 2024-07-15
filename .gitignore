@@ -1,8 +1,11 @@
 .vscode
 .vs
 TutorialMod/config.json
-Loadout/config.json
 TutorialMod_code/bin
 TutorialMod_code/lib
 TutorialMod_code/obj
+Loadout/config.json
+Loadout_code/bin
+Loadout_code/lib
+Loadout_code/obj
 update.bat

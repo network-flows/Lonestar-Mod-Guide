@@ -101,7 +101,6 @@ namespace Loadout
             }
         }
         public DevInfo devInfo = new DevInfo();
-        
 
         private bool InWanted
         {
@@ -117,12 +116,15 @@ namespace Loadout
         }
         public void OnGUI()
         {
+            float scalefactor = Math.Min(Screen.width / 1920f, Screen.height / 1080f);
+            GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(scalefactor, scalefactor, 1));
+
             if (active)
             {
                 UIManager.Instance().ShowPanel<BlockPanel>(FilePath.blockPanel, UI_Layer.System, null);
-                width = Screen.width * 3 / 5;
-                height = Screen.height * 3 / 5;
-                rect = new Rect(Screen.width * 1 / 5, Screen.width * 1 / 10, width, height);
+                width = 1920 * 3 / 5;
+                height = 1080 * 3 / 5;
+                rect = new Rect(1920 * 1 / 5, 1080 * 1 / 10, width, height);
                 GUILayout.BeginArea(rect);
                 int page = 0;
                 if (InBattle) page = Make_Panel("Loadout/Keys/Home", titles_battle, false, 7);
@@ -406,6 +408,7 @@ namespace Loadout
                 if (new_unit != null)
                 {
                     UnitData.RefreshPlayerUnit(selected, new_unit, null);
+                    EventCenter.Instance().EventTrigger(EventName.refreshInventory);
                     AudioManager.Instance().PlaySound(FilePath.sound + "Slot/Slot_Reform", false, null, true);
                     selected = new_unit;
                 }
