@@ -63,3 +63,5 @@ LanguageCommon/<LanguageID>;"<LanguageDisplayName>"
 和添加新语言的操作十分类似。在`English`或`ChineseSimplified`文件夹中加入CSV文件，然后向其中添加所需的翻译内容。
 
 你甚至可以把你的文本翻译成另一个模组中添加的语言。只要你的模组中不出现`LanguageCommon/<LanguageID>;"<LanguageDisplayName>"`，该语言就不会出现在语言选择栏中。也就是说你的翻译只在对应的语言模组激活时才会起效。
+
+下一节：[添加部件](ShipUnit.md)

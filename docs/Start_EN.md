@@ -116,3 +116,5 @@ If you want to upload multiple preview images or short videos, you can directly 
 If this is your first time to upload a mod, that should direct you to an agreement page of Steam.
 
 Sometimes the workshop mods are not updated in time. So it's better to make bigger updates in less frequency. Also, updating the version number and adding a github link to description will help players identify whether their mod is up-to-date.
+
+Next Chapter: [Translation](Translation_EN.md)

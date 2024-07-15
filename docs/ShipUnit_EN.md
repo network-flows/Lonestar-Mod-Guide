@@ -122,3 +122,5 @@ DataShipUnitManager.Instance().GetDataListByID(21849).ForEach(data => { data.InG
 - AnimPath: Animation of the unit when they appear on the ship. Or leave blank to use SpritePath as static image when no animation is provided.
 
 \*Disabled: Can't appear in shop or random rewards, but may appear as a fixed reward of an event or in a historical save. Doesn't appear in the encyclopedia.
+
+Next Chapter: [Other Content](Content_EN.md)

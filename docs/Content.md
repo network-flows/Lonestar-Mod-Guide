@@ -239,3 +239,5 @@
     - 驾驶员对话和宝物技能很类似，不过它们需要手动安装监听器(listeners)
     - 如果你正确[提取游戏文件](Start.md#disassemble-the-game-optional)了的话，里面有很多形如`PM_<PilotID>`的示例 (例如`PM_10000`)
     - 如果留空，则没有驾驶员对话。
+
+下一节：[添加飞船](Ship.md)

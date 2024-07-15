@@ -1,3 +1,7 @@
+<div style="text-align: center;">
+  <image src="images/title_english.png" alt="title image"></image>
+</div>
+
 # Lonestar-Mod-Guide
 
 [简体中文](README.md) English
@@ -12,6 +16,6 @@ Articles:
 - [Translation](docs/Translation_EN.md)
 - [Units](docs/ShipUnit_EN.md)
 - [Other Content](docs/Content_EN.md)
-- [Ships](docs/Ship.md)
-- [Patching](docs/Patch_EN.md)
+- [Ships](docs/Ship_EN.md)
+- [Editing Code](docs/Patch_EN.md)
 

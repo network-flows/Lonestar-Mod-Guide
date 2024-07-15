@@ -132,3 +132,5 @@ DataShipUnitManager.Instance().GetDataListByID(21849).ForEach(data => { data.InG
 - AnimPath: 当部件装备在飞船上时的动画外观。留空以使用静态外观。
 
 \*禁用：禁用：这个部件不能出现在商店或者随机奖励中，也不会出现在图鉴里。但可能出现在事件的固定奖励中，也有可能出现在历史记录中。
+
+下一节：[添加其他内容](Content.md)

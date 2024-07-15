@@ -242,3 +242,5 @@ Fields exclusive to this item:
     - PilotMono acts very much like a treasure. The difference is its event listeners are added manually instead of automatically.
     - Examples see `PM_<PilotID>` (Eg. `PM_10000`) in [extracted game files](Start_EN.md#disassemble-the-game-optional).
     - If left blank, there will be no talking at all.
+
+Next Chapter: [Ships](Ship_EN.md)

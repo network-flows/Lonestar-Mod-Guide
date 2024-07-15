@@ -156,3 +156,5 @@ Add a json file in `ShipData` folder and copy its name to `ShipDataPath` field i
     - Eg. "USSDSS" means the ship will go up at turn 1, stop at turn 2 and 3, go down at turn 4, stop at turn 5 and 6, then repeat.
 - alerts: alert turns, similar to moves. Y/N means Alert on/off.
 - controller: if your ship has more complex behaviors, implement in a class inheriting `AIShipController` and set `controller` to class name. (Refer to Order)
+
+Next Chapter: [Editing Code](Patch_EN.md)
