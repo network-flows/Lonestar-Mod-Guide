@@ -302,7 +302,7 @@ namespace Loadout
 
                 bool d_ingame = d.InGame && (d.GainType == 0 || d.GainType == 4);
                 int ship_id = ship_ids[fShip];
-                check = (ship_id == -1 || (ship_id == -2 && !d_ingame) || (ship_id >= 0 && d_ingame && d.Pros.Contains(ship_id)) || (ship_id >= 0 && d_ingame && d.Pros.Length == 0));
+                check = (ship_id == -1 || (ship_id == -2 && (!d.InGame || d.GainType == 5)) || (ship_id >= 0 && d_ingame && d.Pros.Contains(ship_id)) || (ship_id >= 0 && d_ingame && d.Pros.Length == 0));
                 if (!check) continue;
 
                 check = (fType == 0) || (fType >= 1 && fType == d.Type);
@@ -445,7 +445,7 @@ namespace Loadout
                 if (treasures.Contains(d.ID)) continue;
 
                 int ship_id = ship_ids[fShip];
-                bool check = (ship_id == -1 || (ship_id == -2 && !d.InGame) || (ship_id >= 0 && d.InGame && d.Pros.Contains(ship_id)));
+                bool check = (ship_id == -1 || (ship_id == -2 && (!d.InGame || d.GainType == 5)) || (ship_id >= 0 && d.InGame && d.Pros.Contains(ship_id)));
                 if (!check) continue;
 
                 check = (fRare == 0) || (fRare >= 1 && d.Rare == fRare - 1);
