@@ -4,7 +4,10 @@
 
 所谓打补丁（Patching），通俗的讲就是改代码。本文介绍如何修改游戏逻辑。
 
-开始之前，请确保你的设备上已安装Visual Studio（[链接](https://visualstudio.microsoft.com/downloads/)）
+开始之前，请确保你的设备上已安装Visual Studio
+- 推荐安装2022版本及以上
+- 从这个[链接](https://visualstudio.microsoft.com/downloads/)下载
+- 选择 .NET 桌面开发，然后按默认选项安装即可
 
 下载并找到`TutorialMod`的[源码](../TutorialMod_code)，然后打开项目。
 
@@ -23,6 +26,7 @@
 - 0Harmony.dll: 和补丁相关
 - Assembly-CSharp.dll: 游戏逻辑
 - UnityEngine.dll
+- UnityEngine.UIModule.dll
 - UnityEngine.CoreModule.dll
 - UnityEngine.AudioModule.dll: 和音频有关
 - LeanLocalization.dll: 和翻译有关

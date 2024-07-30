@@ -4,7 +4,11 @@
 
 This page tells you how to modify functions in the game.
 
-Before you start, make sure you have Microsoft Visual Studio installed on your machine. (Download [here](https://visualstudio.microsoft.com/downloads/))
+Before you start, make sure you have Microsoft Visual Studio installed on your machine. 
+
+- VS2022 or higher versions recommended
+- Download [here](https://visualstudio.microsoft.com/downloads/)
+- Choose .Net Desktop dev kit, and go along with default settings.
 
 Download TutorialMod from releases, and open the project with Visual Studio.
 
@@ -23,6 +27,7 @@ All needed dependencies are located at `LONESTAR\LONESTAR_Data\Managed` (`LONEST
 - 0Harmony.dll: About patching.
 - Assembly-CSharp.dll: Game assembly.
 - UnityEngine.dll
+- UnityEngine.UIModule.dll
 - UnityEngine.CoreModule.dll
 - UnityEngine.AudioModule.dll: About sound effects.
 - LeanLocalization.dll: About translations.

@@ -45,7 +45,7 @@ Dnspy won't extract game assets, but it supports code searching and game logic m
 
 ## Mod Structure
 All mods are located in 
-- Windows: `%USERPROFILE%/AppData/LocalLow/Shuxi/LONESTAR/Save`
+- Windows: `%USERPROFILE%/AppData/LocalLow/Shuxi/LONESTAR/Mods`
 - MAC: `~/Library/Application Support/Shuxi/LONESTAR/Mods`
 
 The file structure of Mods directory:

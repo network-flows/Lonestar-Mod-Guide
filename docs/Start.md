@@ -44,7 +44,7 @@ Dnspy 不能提取资源文件，但它能查阅和修改代码，可能会很�
 
 ## 模组结构
 所有模组都位于以下地址：
-- Windows：`%USERPROFILE%/AppData/LocalLow/Shuxi/LONESTAR/Save`
+- Windows：`%USERPROFILE%/AppData/LocalLow/Shuxi/LONESTAR/Mods`
 - MAC：`~/Library/Application Support/Shuxi/LONESTAR/Mods`
 
 这是模组文件夹的结构：
