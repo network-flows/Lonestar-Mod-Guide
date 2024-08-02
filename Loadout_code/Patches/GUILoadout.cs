@@ -9,6 +9,7 @@ using Lean.Localization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Utils;
+using UnityEngine.UIElements;
 
 namespace Loadout
 {
@@ -36,7 +37,7 @@ namespace Loadout
         private Dictionary<string, int> args2 = new Dictionary<string, int>();
         private string old_tooltip = "";
         private string new_tooltip = "";
-        private List<string> ship_keys_common = new List<string> { "Loadout/Field/Reroll" };
+        private List<string> ship_keys_common = new List<string> { "Loadout/Field/Reroll", "Loadout/Field/AssociationLv" };
         private List<string> ship_keys_normal = new List<string> { "Loadout/Field/StarCoin", "Loadout/Field/HP", "Loadout/Field/MaxHP", "Loadout/Field/Move", "Loadout/Field/MaxMove", "Loadout/Field/MaxShield", "Loadout/Field/MaxSwap", "Loadout/Field/EquipLimit", "Loadout/Field/Days", "Loadout/Field/EnergyCount", "Loadout/Field/MoveLimit" };
         private List<string> ship_keys_battle = new List<string> { "Loadout/Field/StarCoin", "Loadout/Field/HP", "Loadout/Field/MaxHP", "Loadout/Field/Move", "Loadout/Field/MaxMove", "Loadout/Field/Shield", "Loadout/Field/MaxShield", "Loadout/Field/Swap", "Loadout/Field/MaxSwap" };
         private List<string> enemy_keys_battle = new List<string> { "Loadout/Field/EnemyHP", "Loadout/Field/EnemyMaxHP", "Loadout/Field/EnemyDurability", "Loadout/Field/EnemyMaxDurability" };
@@ -513,7 +514,12 @@ namespace Loadout
         }
         private void Page_Ship()
         {
-            if (!InWanted) Make_TextFields(ship_keys_common);
+            if (!InWanted)
+            {
+                Make_TextFields(ship_keys_common
+                    .Concat(ship_ids.Where(d => d >= 0).Select(d => $"_Lv-{d}"))
+                    .Concat(ship_ids.Where(d => d >= 0).Select(d => $"_Di-{d}")).ToList());
+            }
             else if (InBattle) Make_TextFields(ship_keys_battle);
             else
             {
@@ -582,7 +588,9 @@ namespace Loadout
             foreach (string key in keys)
             {
                 GUILayout.BeginHorizontal();
-                GUILayout.Label(tr(key), GUILayout.Width(width / 5));
+                if (key.StartsWith("_Di-")) GUILayout.Label(tr(DataShipManager.Instance().GetDataByID(int.Parse(key.Substring(4))).Name) + tr("Loadout/Field/ShipDifficulty"), GUILayout.Width(width / 5));
+                else if (key.StartsWith("_Lv-")) GUILayout.Label(tr(DataShipManager.Instance().GetDataByID(int.Parse(key.Substring(4))).Name) + tr("Loadout/Field/ShipLv"), GUILayout.Width(width / 5));
+                else GUILayout.Label(tr(key), GUILayout.Width(width / 5));
                 i_old = key switch
                 {
                     "Loadout/Field/StarCoin" => WantedManager.Instance().wantedProcess.starCoin,
@@ -597,6 +605,7 @@ namespace Loadout
                     "Loadout/Field/EquipLimit" => ShipDatasManager.Instance().currentPlayerShipData.shipLoadLimit,
                     "Loadout/Field/Days" => WantedManager.Instance().wantedProcess.currentDays,
                     "Loadout/Field/Reroll" => SaveManager.Instance().saveDataPack.GetCurrentData().roll,
+                    "Loadout/Field/AssociationLv" => SaveManager.Instance().saveDataPack.GetCurrentData().totalLV,
                     "Loadout/Field/EnergyCount" => Define.defineValue.powerNumEveryTurn,
                     "Loadout/Field/MoveLimit" => Define.defineValue.moveCount,
                     "Loadout/Field/EnemyHP" => BattleManager.Instance().enemyShip.shipData.currentHP,
@@ -605,6 +614,13 @@ namespace Loadout
                     "Loadout/Field/EnemyMaxDurability" => BattleManager.Instance().enemyShip.breakSystem.breakLimit,
                     _ => 0,
                 };
+                if (key.StartsWith("_Di-") || key.StartsWith("_Lv-"))
+                {
+                    int ship_id = int.Parse(key.Substring(4));
+                    var data = SaveManager.Instance().saveDataPack.GetCurrentData().saveDataShips.Where(d => d.shipID == ship_id).FirstOrDefault();
+                    i_old = key.StartsWith("_Di-") ? data.difficulty : data.lv;
+                }
+                
                 s_old = args.GetValueOrDefault(key, i_old.ToString());
                 s_new = GUILayout.TextArea(s_old, GUILayout.ExpandWidth(true));
                 if (s_new.Contains('\n')) { s_new = s_new.Trim().Replace("\n", ""); pressed = true; }
@@ -671,6 +687,28 @@ namespace Loadout
                             SaveManager.Instance().saveDataPack.GetCurrentData().roll = i_new;
                             ShipSelectPanel panel1 = UIManager.Instance().GetPanel<ShipSelectPanel>(FilePath.shipSelectPanel);
                             if (panel1 != null) panel1.RollText();
+                            SaveManager.Instance().SavePermanentData();
+                            break;
+                        case "Loadout/Field/AssociationLv":
+                            if (i_new < 0) i_new = 0;
+                            if (i_new > Define.lvLimit) i_new = Define.lvLimit;
+                            SaveData saveData = SaveManager.Instance().saveDataPack.GetCurrentData();
+                            saveData.totalLV = i_new;
+                            foreach (var pilot in saveData.saveDataPilots)
+                            {
+                                if (saveData.totalLV >= DataPilotManager.Instance().GetDataByID(pilot.ID).UnlockLv)
+                                    pilot.unlock = true;
+                                else pilot.unlock = false;
+                            }
+                            foreach (var data in saveData.saveDataShips)
+                            {
+                                data.pilots.Clear();
+                                data.pilotsForCusMod.Clear();
+                                data.currentPilot = null;
+                            }
+                            ShipSelectPanel panel2 = UIManager.Instance().GetPanel<ShipSelectPanel>(FilePath.shipSelectPanel);
+                            if (panel2 != null && panel2.isActiveAndEnabled) { panel2.Hide(); panel2.Show(); }
+                            SaveManager.Instance().SavePermanentData();
                             break;
                         case "Loadout/Field/EnergyCount":
                             if (i_new < 0) i_new = 0;
@@ -705,6 +743,25 @@ namespace Loadout
                         default:
                             break;
                     };
+                    if (key.StartsWith("_Di-") || key.StartsWith("_Lv-"))
+                    {
+                        int ship_id = int.Parse(key.Substring(4));
+                        var data = SaveManager.Instance().saveDataPack.GetCurrentData().saveDataShips.Where(d => d.shipID == ship_id).FirstOrDefault();
+                        if (key.StartsWith("_Di-"))
+                        {
+                            if (i_new < 0) i_new = 0;
+                            if (i_new > Define.difficultyLimit) i_new = Define.difficultyLimit;
+                            data.difficulty = i_new;
+                            data.selectHandlyDifficulty = i_new;
+                        }
+                        else
+                        {
+                            if (i_new < 0) i_new = 0;
+                            if (i_new > Define.lvLimit) i_new = Define.lvLimit;
+                            data.lv = i_new;
+                        }
+                    }
+
                     args.Clear();
                     GUI.FocusControl("");
                 }

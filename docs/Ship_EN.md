@@ -132,7 +132,7 @@ Add a json file in `ShipData` folder and copy its name to `ShipDataPath` field i
     "units": [
         [..., ..., ...],  // Top lane units
         [..., ..., ...],  // Mid lane units
-        [..., ..., ...],  // Bottom lane units
+        [..., ..., ...]   // Bottom lane units
     ],
     "moves": "USSDSS",    // (Enemy only) move direction
     "alerts": "NYNNYN",   // (Enemy only) alert turns
