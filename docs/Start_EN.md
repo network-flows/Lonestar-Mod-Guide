@@ -124,7 +124,7 @@ Debug messages can also be found in `Mods/../Player.log`, but that file will ref
 
 ### In-game console
 
-`loadout` Mod ([link](../Loadout)) provides various functionalities to test your units, treasures, etc.
+`loadout` Mod ([link](../Loadout)) provides various functionalities to test your units, treasures, etc. It's code can be viewed [here](../Loadout_code/)
 
 ## Publish your mod
 Publish your mod by pressing the update button in Mod page. It's advised to include a `preview.png` that is shown on the workshop page. 
