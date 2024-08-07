@@ -51,6 +51,9 @@ Fields:
 - Image: Image of this ship. See [Image](#image) part.
 - UnlockLv: Association level required to use this ship.
 - Des/Des_: Info about this ship.
+- HP: Max HP, must > 0;
+- SkillPath: Class name of ship skill. (Eg. Shield, Exchange, Paint)
+- Args: Arguments of ship skill.
 - Move: Max fuel.
 - ShipDataPath: Initial units. See [AI](#units-and-ai) part.
 - PowerCoreWeight: Initial point energy resources.
@@ -100,7 +103,7 @@ The json file looks like this:
 }
 ```
 
-You can add decorative jets and traces (optional) and mark the ship center(highly recommended) in `components`. Each component is represented as follow:
+You can add decorative jets, traces (optional) and mark the ship center(highly recommended) in `components`. Each component is represented as follow:
 
 ```
 {
@@ -114,12 +117,14 @@ You can add decorative jets and traces (optional) and mark the ship center(highl
     - Jet: "jet_fire", "jet_burn", "jet_ghost", "jet_air"
     - Flying trace in battle (on move): "movingtrailspot"
     - Flying trace out of battles (when idle, player ship only): "movingtrail"
-    - **Spaceship Center**: "Center"
+    - Laser emission point: "laser"
+    - **Spaceship Center**: "center"
 - pos:
-    - The position where jets & flying traces are emitted.
+    - The position where jets/lasers/flying traces are emitted.
     - Pinpoint the coordinate using PS or other tools.
+    - The y-coord of laser points will be auto-calibrated to make them align with each lane. Also, please make sure the number of laser points matches ship width.
     - Use [this image](../images/calibrator.png) to preview the position of units on the ship, and find the coordinate of the center. See the picture below.
-    - If Center not set, will default to image center.
+    - If center not set, will default to image center.
 
 ![Components.png](../images/Components.png)
 

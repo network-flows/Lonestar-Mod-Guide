@@ -103,9 +103,26 @@ Dnspy 不能提取资源文件，但它能查阅和修改代码，可能会很�
 如果同一个modID检测到了不同的模组，只有第一个加载的模组起效。而模组加载顺序为 Dev > Steam > Local，也就是说如果你有Dev版本的模组，它就会覆盖steam上的同名版本。
 
 ## 测试模组
-有一些工具能帮助你测试你的模组，例如[BepInEx](https://github.com/BepInEx/BepInEx)和[UnityExplorer](https://github.com/sinai-dev/UnityExplorer)，它们都在Github上开源。
+### 打印调试信息
+BepInEx可以在运行时打印调试信息。BepInEx使用方法：下载[BepInEx](https://github.com/BepInEx/BepInEx)，解压到`LONESTAR`文件夹（doorstop_config.ini应该与LONESTAR.exe同目录），运行一次游戏，退出，用记事本打开`BepInEx/config/BepInEx.cfg`，找到如下内容，把其中的`false`改成`true`
 
-有一个控制台模组 `loadout` ([链接](../Loadout)) 能帮助你测试你的部件。另外示例模组 `TutorialMod` ([链接](../TutotialMod)及[代码](../TutorialMod_code))能提供模组的示例。
+```
+...
+[Logging.Console]
+
+## Enables showing a console for log output.
+# Setting type: Boolean
+# Default value: false
+Enabled = true // 这里的false改成true
+...
+```
+
+之后运行游戏时就会产生一个即时的窗口打印错误信息。（这里我们只用到了BepInEx的打印功能，不用BepInEx加载模组。）
+
+调试信息`Player.log`也可以在模组文件夹的上级文件夹中找到，但这个文件只有在运行结束时才会刷新。
+
+### 游戏内控制台
+控制台模组 `loadout` ([链接](../Loadout)) 提供各种游戏内调试功能，方便测试部件和宝物效果等。它的源码可以在[这里](../Loadout_code/)看到
 
 ## 发布模组
 在模组界面点击发布按钮以发布模组。建议添加一张预览图`preview.png`，这张图会显示在创意工坊的封面上，供玩家参阅。

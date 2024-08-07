@@ -14,26 +14,33 @@ Download TutorialMod from releases, and open the project with Visual Studio.
 
 ## Adding dependencies
 
-Right click on the References at the Solution Explorer view, select Add Reference. If there is no Solution Explorer view, go to View > Solution Explorer to show that view.
+### Necessary dependencies
+When opening the project for the first time, you may meet some compilation errors. That's resulted from dependency missing. All needed dependencies are located at `LONESTAR\LONESTAR_Data\Managed` (`LONESTAR` directory can be found in Steam > Library > LONESTAR > Settings > Manage > Browse Local Files)
+
+Make a `lib` folder in project directory (It should be in the same folder as the .sln file), and copy the following files to `lib`
+
+- 0Harmony.dll
+- Assembly-CSharp.dll
+- LeanLocalization.dll
+- Unity.TextMeshPro.dll
+- UnityEngine.AudioModule.dll
+- UnityEngine.CoreModule.dll
+- UnityEngine.dll
+- UnityEngine.UIModule.dll
+
+Build the project and it should proceed successfully now. Target dll can be found at `bin/Release/TutorialMod.dll`.
+
+### Other dependencies
+
+If you need other dlls or third-party dependencies, right click on the `References` in the Solution Explorer view. If there is no Solution Explorer view, open one from the `View` tab on the top menu.
 
 ![dependencies.png](../images/dependencies.png)
 
-Click Browse button to add dependencies.
+Click `Browse` to add references.
 
 ![dependencies2.png](../images/dependencies2.png)
 
-All needed dependencies are located at `LONESTAR\LONESTAR_Data\Managed` (`LONESTAR` directory can be found in Steam > Library > LONESTAR > Settings > Manage > Browse Local Files), you may need some of the following dll files:
-
-- 0Harmony.dll: About patching.
-- Assembly-CSharp.dll: Game assembly.
-- UnityEngine.dll
-- UnityEngine.UIModule.dll
-- UnityEngine.CoreModule.dll
-- UnityEngine.AudioModule.dll: About sound effects.
-- LeanLocalization.dll: About translations.
-- Unity.TextMeshPro.dll: About UI.
-
-After adding dependencies to the list, make sure they are ticked, then click OK. Try build the project and it should proceed successfully now. Target dll can be found at `bin/Release/TutorialMod.dll`. You may add other dlls or third-party dependencies anytime you need them.
+Choose the needed files and click OK, and it's done.
 
 ## The UserMod class
 Your assembly should have exactly one class inheriting `UserMod`. See the `TutorialMod` class for example.

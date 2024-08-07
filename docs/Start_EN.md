@@ -104,9 +104,27 @@ Start your mod by creating a subfolder in `Dev` and placing `mod.json` into the 
 If multiple mods with the same modID are detected, only the first is used. Note that mods load in the order Dev > Steam > Local. So if you have a dev mod, it will override its Steam version.
 
 ## Testing your mod
-There are tools that help you debug your mods, like [BepInEx](https://github.com/BepInEx/BepInEx) or [UnityExplorer](https://github.com/sinai-dev/UnityExplorer). They are available in Github.
+### Print debug messages
+[BepInEx](https://github.com/BepInEx/BepInEx) provides a window to display debug messages during runtime. How to use: Download [BepInEx](https://github.com/BepInEx/BepInEx) and extract content to `LONESTAR` directory (`doorstop_config.ini` should be in the same directory as `LONESTAR.exe`). Run the game, exit, then open `BepInEx/config/BepInEx.cfg` with notepad, find the following content and change the `false` into `true`
 
-Also there is a mod `loadout` ([link](../Loadout)) that may help you debug your units. And a mod `TutorialMod` ([link](../TutotialMod) & [Code](../TutorialMod_code)) that is used as an example in this document.
+```
+...
+[Logging.Console]
+
+## Enables showing a console for log output.
+# Setting type: Boolean
+# Default value: false
+Enabled = true // Change this false into true
+...
+```
+
+Run the game and a console window will show up displaying debug messages. (We only use the Debug function of BepInEx, not using it to load mods.)
+
+Debug messages can also be found in `Mods/../Player.log`, but that file will refresh only after the game terminates.
+
+### In-game console
+
+`loadout` Mod ([link](../Loadout)) provides various functionalities to test your units, treasures, etc.
 
 ## Publish your mod
 Publish your mod by pressing the update button in Mod page. It's advised to include a `preview.png` that is shown on the workshop page. 

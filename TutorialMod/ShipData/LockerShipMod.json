@@ -40,7 +40,7 @@
         },
         {
             "type": "center",
-            "pos": {"x": 400, "y": 350}
+            "pos": {"x": 300, "y": 350}
         }
     ],
     "laser": "LaserFogPurple"

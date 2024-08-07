@@ -13,7 +13,25 @@
 
 ## 添加引用
 
-初次打开项目时可能会出现一些编译错误，这是因为引用缺失。右键点击解决方案浏览器视图中的"引用"，选择"添加引用"。如果没有解决方案浏览器，在顶部菜单栏的视图选项里面找到解决方案浏览器并打开。
+### 必要引用
+初次打开项目时可能会出现一些编译错误，这是因为引用缺失。所有必要的引用文件都位于`LONESTAR\LONESTAR_Data\Managed`（`LONESTAR` 文件夹可以在Steam浏览本地文件找到）
+
+在项目目录（与.sln同级的目录）新建一个`lib`文件夹，然后将以下文件拷贝到`lib`文件夹内即可。
+
+- 0Harmony.dll
+- Assembly-CSharp.dll
+- LeanLocalization.dll
+- Unity.TextMeshPro.dll
+- UnityEngine.AudioModule.dll
+- UnityEngine.CoreModule.dll
+- UnityEngine.dll
+- UnityEngine.UI.dll
+- UnityEngine.UIModule.dll
+
+构建项目，现在应该能成功编译了。编译出来的dll位于`bin/Release/TutorialMod.dll`目录下。
+
+### 其他引用
+如果你需要其他dll文件或引用第三方库：右键点击解决方案浏览器视图中的"引用"，选择"添加引用"。如果没有解决方案浏览器，在顶部菜单栏的视图选项里面找到解决方案浏览器并打开。
 
 ![dependencies_zh.png](../images/dependencies_zh.png)
 
@@ -21,18 +39,7 @@
 
 ![dependencies2_zh.png](../images/dependencies2_zh.png)
 
-所有引用都位于`LONESTAR\LONESTAR_Data\Managed`（`LONESTAR` 文件夹可以在Steam浏览本地文件找到），以下依赖项是你可能要用到的。
-
-- 0Harmony.dll: 和补丁相关
-- Assembly-CSharp.dll: 游戏逻辑
-- UnityEngine.dll
-- UnityEngine.UIModule.dll
-- UnityEngine.CoreModule.dll
-- UnityEngine.AudioModule.dll: 和音频有关
-- LeanLocalization.dll: 和翻译有关
-- Unity.TextMeshPro.dll: 和用户界面有关
-
-把这些引用添加到列表后，确保它们被勾选，然后确认。构建项目，现在应该能成功编译了。编译出来的dll位于`bin/Release/TutorialMod.dll`目录下。如果你需要任何第三方库，也可以随时添加到依赖项。
+选择其他文件，勾选它们，然后点击确定即可。
 
 ## UserMod类
 你的项目中应该包含且只包含一个继承了`UserMod`的类，可参考`TutorialMod`类作为示例。
