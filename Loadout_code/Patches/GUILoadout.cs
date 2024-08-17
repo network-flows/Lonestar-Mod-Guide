@@ -243,7 +243,7 @@ namespace Loadout
                     check = (fRare == 0) || (fRare >= 1 && d.EnemyType == fRare - 1);
                     if (!check) continue;
 
-                    check = fStage == 0 || (fStage >= 1 && d.EnemyPhaseType % 10 == fStage);
+                    check = fStage == 0 || (fStage >= 1 && Math.Min(d.EnemyPhaseType % 10, 3) == fStage);
                     if (!check) continue;
 
                     check = tr(d.Name).ToUpper().Contains(fSearch) || (search_des && tr(d.Des).ToUpper().Contains(fSearch));
@@ -972,7 +972,7 @@ namespace Loadout
                                 if (des.EnemyType == 2) type_text = "WantedPanel/Danger/High";
                                 if (!des.InGame) type_text = "Loadout/Label/NotAvail";
                                 type_text = tr(type_text);
-                                rare_text = tr(filters_stage[des.EnemyPhaseType % 10]);
+                                rare_text = tr(filters_stage[Math.Min(des.EnemyPhaseType % 10, 3)]);
                                 colorform = RareColor.GetColorForm(ColorUtility.ToHtmlStringRGB(RareColor.GetColorByRare(des.EnemyType)), title);
                                 tooltip = $"敌人:{des.ID}";
                                 content = new GUIContent(colorform, tooltip);
