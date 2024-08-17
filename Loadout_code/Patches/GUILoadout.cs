@@ -77,7 +77,7 @@ namespace Loadout
                 string toClipboard = keyPressed switch
                 {
                     KeyCode.Q => itemID,
-                    KeyCode.W => skillName,
+                    KeyCode.W => FilePath.GetNameWithPath(skillName),
                     KeyCode.E => imageName,
                     KeyCode.R => animationName,
                     _ => null,
