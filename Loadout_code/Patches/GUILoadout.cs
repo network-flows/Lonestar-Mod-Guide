@@ -271,19 +271,22 @@ namespace Loadout
             else
             {
                 Make_TextFields(enemy_keys_battle);
+                GUILayout.BeginHorizontal();
                 if (GUILayout.Button(tr("Loadout/Button/Kill")))
                 {
                     BattleManager.Instance().ShipDownHandler(BattleManager.Instance().enemyShip);
                     active = false;
                     UIManager.Instance().HidePanel(FilePath.blockPanel);
                 }
-                if (GUILayout.Button(tr("Loadout/Button/Suicide")))
-                {
-                    BattleManager.Instance().ShipDownHandler(BattleManager.Instance().playerShip);
-                    active = false;
-                    UIManager.Instance().HidePanel(FilePath.blockPanel);
-                }
-
+                //if (GUILayout.Button(tr("Loadout/Button/Suicide")))
+                //{
+                //    BattleManager.Instance().ShipDownHandler(BattleManager.Instance().playerShip);
+                //    active = false;
+                //    UIManager.Instance().HidePanel(FilePath.blockPanel);
+                //}
+                if (GUILayout.Button(tr("Loadout/Button/MoveUp"))) BattleManager.Instance().enemyShip.OnMove(1);
+                if (GUILayout.Button(tr("Loadout/Button/MoveDown"))) BattleManager.Instance().enemyShip.OnMove(-1);
+                GUILayout.EndHorizontal();
             }
         }
         private void Page_ShipUnit()
@@ -520,10 +523,33 @@ namespace Loadout
                     .Concat(ship_ids.Where(d => d >= 0).Select(d => $"_Lv-{d}"))
                     .Concat(ship_ids.Where(d => d >= 0).Select(d => $"_Di-{d}")).ToList());
             }
-            else if (InBattle) Make_TextFields(ship_keys_battle);
+            else if (InBattle)
+            {
+                Make_TextFields(ship_keys_battle);
+                GUILayout.BeginHorizontal();
+                if (GUILayout.Button(tr("Loadout/Button/MoveUp"))) BattleManager.Instance().playerShip.OnMove(1);
+                if (GUILayout.Button(tr("Loadout/Button/MoveDown"))) BattleManager.Instance().playerShip.OnMove(-1);
+                if (GUILayout.Button(tr("Loadout/Button/ClearHand"))) PowerManager.Instance().DestroyHandPowers();
+                GUILayout.EndHorizontal();
+                for (int i = 0; i < energy_colors.Count; i++)
+                {
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label(tr("Loadout/Label/GenEnergy").Replace("X", tr(energy_colors_des[i])), GUILayout.Width(100));
+                    for (int j = 1; j < 10; j++)
+                    {
+                        if (GUILayout.Button(j.ToString()))
+                        {
+                            EnergyData energyData = PowerManager.Instance().Create(j, energy_colors[i], true, false);
+                            EventCenter.Instance().EventTrigger(EventName.createPowerPre, energyData);
+                            EventCenter.Instance().EventTrigger(EventName.createPower, energyData);
+                            EventCenter.Instance().EventTrigger(EventName.createdPower, energyData);
+                        }
+                    }
+                    GUILayout.EndHorizontal();
+                }
+            }
             else
             {
-                // Patch_PreviewManager.Toggle = GUILayout.Toggle(Patch_PreviewManager.Toggle, "启动预览");
                 Make_TextFields(ship_keys_normal);
                 GUILayout.BeginHorizontal();
                 GUILayout.Label(tr("Loadout/Text/EnergyAdd"));
