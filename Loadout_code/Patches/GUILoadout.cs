@@ -60,24 +60,16 @@ namespace Loadout
             public string imageName;
             public string animationName;
             public KeyCode keyPressed = KeyCode.None;
-            public int keyExpire;
-            const int keyExpireMax = 400; 
             public void CheckKey()
             {
-                if (Event.current.keyCode == KeyCode.Q) { keyPressed = KeyCode.Q; keyExpire = keyExpireMax; }
-                else if (Event.current.keyCode == KeyCode.W) { keyPressed = KeyCode.W; keyExpire = keyExpireMax; }
-                else if (Event.current.keyCode == KeyCode.E) { keyPressed = KeyCode.E; keyExpire = keyExpireMax; }
-                else if (Event.current.keyCode == KeyCode.R) { keyPressed = KeyCode.R; keyExpire = keyExpireMax; }
-                else 
-                {
-                    keyExpire--;
-                    if (keyExpire <= 0) keyPressed = KeyCode.None;
-                    return;
-                }
+                if (Event.current.keyCode == KeyCode.Q) keyPressed = KeyCode.Q;
+                else if (Event.current.keyCode == KeyCode.W) keyPressed = KeyCode.W;
+                else if (Event.current.keyCode == KeyCode.E) keyPressed = KeyCode.E;
+                else if (Event.current.keyCode == KeyCode.R) keyPressed = KeyCode.R;
                 string toClipboard = keyPressed switch
                 {
                     KeyCode.Q => itemID,
-                    KeyCode.W => FilePath.GetNameWithPath(skillName),
+                    KeyCode.W => skillName,
                     KeyCode.E => imageName,
                     KeyCode.R => animationName,
                     _ => null,
@@ -94,7 +86,7 @@ namespace Loadout
                     _ => LeanLocalization.GetTranslationText("Loadout/Copy"),
                 };
                 string s1 = itemID != null ? LeanLocalization.GetTranslationText("Loadout/CopyQ") + $"[Q]: {itemID}\n" : "";
-                string s2 = skillName != null ? LeanLocalization.GetTranslationText("Loadout/CopyW") + $"[W]: {FilePath.GetNameWithPath(skillName)}\n" : "";
+                string s2 = skillName != null ? LeanLocalization.GetTranslationText("Loadout/CopyW") + $"[W]: {skillName}\n" : "";
                 string s3 = imageName != null ? LeanLocalization.GetTranslationText("Loadout/CopyE") + $"[E]: {imageName}\n" : "";
                 string s4 = animationName != null ? LeanLocalization.GetTranslationText("Loadout/CopyR") + $"[R]: {animationName}\n" : "";
                 if (itemID == null && skillName == null && imageName == null && animationName == null) s0 = "";
@@ -888,7 +880,7 @@ namespace Loadout
                                     if (old_tooltip != tooltip) devInfo = new DevInfo
                                     {
                                         itemID = d.modID == null ? d.ID.ToString() : $"{d.modID}.{d.nameInMod}",
-                                        skillName = d.SkillPath,
+                                        skillName = FilePath.GetNameWithPath(d.SkillPath),
                                         imageName = d.SpritePath,
                                         animationName = d.ModPath,
                                     };
@@ -922,7 +914,7 @@ namespace Loadout
                                 if (old_tooltip != tooltip) devInfo = new DevInfo
                                 {
                                     itemID = dt.modID == null ? dt.ID.ToString() : $"{dt.modID}.{dt.nameInMod}",
-                                    skillName = dt.SkillPath,
+                                    skillName = FilePath.GetNameWithPath(dt.SkillPath),
                                     imageName = dt.SpritePath,
                                 };
                             }
@@ -942,7 +934,7 @@ namespace Loadout
                                 if (old_tooltip != tooltip) devInfo = new DevInfo
                                 {
                                     itemID = dta.modID == null ? dta.ID.ToString() : $"{dta.modID}.{dta.nameInMod}",
-                                    skillName = dta.SkillPath,
+                                    skillName = FilePath.GetNameWithPath(dta.SkillPath),
                                     imageName = dta.Image,
                                 };
                             }
@@ -1043,7 +1035,7 @@ namespace Loadout
                                         if (old_tooltip != tooltip) devInfo = new DevInfo
                                         {
                                             itemID = dbe.modID == null ? dbe.ID.ToString() : $"{dbe.modID}.{dbe.nameInMod}",
-                                            skillName = dbe.SkillPath,
+                                            skillName = FilePath.GetNameWithPath(dbe.SkillPath),
                                             imageName = dbe.Sprite,
                                         };
                                     }
@@ -1075,7 +1067,7 @@ namespace Loadout
                                 if (old_tooltip != tooltip) devInfo = new DevInfo
                                 {
                                     itemID = dtmp.modID == null ? dtmp.ID.ToString() : $"{dtmp.modID}.{dtmp.nameInMod}",
-                                    skillName = dtmp.SkillPath,
+                                    skillName = FilePath.GetNameWithPath(dtmp.SkillPath),
                                     imageName = dtmp.SpritePath,
                                     animationName = dtmp.ModPath,
                                 };
