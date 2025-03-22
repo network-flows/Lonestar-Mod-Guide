@@ -104,7 +104,7 @@ Dnspy 不能提取资源文件，但它能查阅和修改代码，可能会很�
 
 ## 测试模组
 ### 打印调试信息
-BepInEx可以在运行时打印调试信息。BepInEx使用方法：下载[BepInEx](https://github.com/BepInEx/BepInEx)，解压到`LONESTAR`文件夹（doorstop_config.ini应该与LONESTAR.exe同目录），运行一次游戏，退出，用记事本打开`BepInEx/config/BepInEx.cfg`，找到如下内容，把其中的`false`改成`true`
+BepInEx可以在运行时打印调试信息。BepInEx使用方法：下载[BepInEx](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.2)，解压到`LONESTAR`文件夹（doorstop_config.ini应该与LONESTAR.exe同目录），运行一次游戏，退出，用记事本打开`BepInEx/config/BepInEx.cfg`，找到如下内容，把其中的`false`改成`true`
 
 ```
 ...
