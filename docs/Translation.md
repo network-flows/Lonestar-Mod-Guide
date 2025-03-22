@@ -21,7 +21,7 @@ TutorialMod的文件结构大致长这样。这里暂时忽略其他文件，只
     └─...(Other Files)
 ```
 
-翻译文本位于`Translation`目录。每个子目录都代表一种语言。孤星猎人目前支持中文`ChineseSimplified`和英文`English`两种语言，你也可以后续添加新的语言。
+翻译文本位于`Translation`目录。每个子目录都代表一种语言。孤星猎人目前支持简体中文`ChineseSimplified`，繁体中文`ChineseTraditional`，英文`English`和日文`Japanese`四种语言，你也可以后续添加新的语言。
 
 每个子目录可能包含一个或多个CSV文件。每个文件包含对应语言的一部分翻译内容。CSV文件的名称没有限制也没有特殊作用，不过它们能帮你辨别每个文件对应哪些翻译内容。
 
@@ -60,7 +60,7 @@ LanguageCommon/<LanguageID>;"<LanguageDisplayName>"
 
 ## 修改/补全现有的翻译
 
-和添加新语言的操作十分类似。在`English`或`ChineseSimplified`文件夹中加入CSV文件，然后向其中添加所需的翻译内容。
+和添加新语言的操作十分类似。在`English`，`ChineseSimplified`，`ChineseTraditional`和/或`Japanese`文件夹中加入CSV文件，然后向其中添加所需的翻译内容。
 
 你甚至可以把你的文本翻译成另一个模组中添加的语言。只要你的模组中不出现`LanguageCommon/<LanguageID>;"<LanguageDisplayName>"`，该语言就不会出现在语言选择栏中。也就是说你的翻译只在对应的语言模组激活时才会起效。
 

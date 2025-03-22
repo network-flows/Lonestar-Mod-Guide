@@ -30,6 +30,9 @@ These are common fields that most types of contents share.
 - Pros: This item is enabled exclusive to listed ships.
     - Mega-ship counts as the original ship.
     - If element numerical, refers to a ship in vanilla game;
+        - 7: Shielder
+        - 77: Spacewalker
+        - 88: Spectra
     - If element in the format: `<ModID>.<ShipID>`, refers to a ship in another mod;
     - Otherwise: element refers to a ship in this mod.
 - WeightOffset: Set this value to make this item appear X% more or less frequently.

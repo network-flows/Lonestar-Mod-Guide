@@ -105,7 +105,7 @@ If multiple mods with the same modID are detected, only the first is used. Note 
 
 ## Testing your mod
 ### Print debug messages
-[BepInEx](https://github.com/BepInEx/BepInEx) provides a window to display debug messages during runtime. How to use: Download [BepInEx](https://github.com/BepInEx/BepInEx) and extract content to `LONESTAR` directory (`doorstop_config.ini` should be in the same directory as `LONESTAR.exe`). Run the game, exit, then open `BepInEx/config/BepInEx.cfg` with notepad, find the following content and change the `false` into `true`
+[BepInEx](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.2) provides a window to display debug messages during runtime. How to use: Download [BepInEx](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.2) and extract content to `LONESTAR` directory (`doorstop_config.ini` should be in the same directory as `LONESTAR.exe`). Run the game, exit, then open `BepInEx/config/BepInEx.cfg` with notepad, find the following content and change the `false` into `true`
 
 ```
 ...

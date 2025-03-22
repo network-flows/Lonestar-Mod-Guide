@@ -105,6 +105,11 @@ DataShipUnitManager.Instance().GetDataListByID(21849).ForEach(data => { data.InG
     - 4: Only appear as initial items. (Eg. Chameleon Device)
     - 5: Disabled. (Eg. Replacement in Vacancy)
 - Pros: Specifies which ship(s) can get this unit. (7 for Shielder and 77 for Spacewalker.)
+    - 7: Shielder
+    - 77: Spacewalker
+    - 88: Spectra
+    - \<ID\>: Modded ship (in this mod)
+    - \<ModID\>.\<ID\>: Modded ship (in other mods)
 - PowerSlot: List of color slots. 0 for White, 1 for Blue, 2 for Orange.
 - CountOffset: By default, Common/Rare/Legendary units have 3/2/1 copies in the universe. Set CountOffset to 1/-1 to add/remove a copy.
 - WeightOffset: By default, units of the same rarity have the same chance to appear in random rewards. Set WeightOffset to 30/-30 make them appear 30% more/less frequently.

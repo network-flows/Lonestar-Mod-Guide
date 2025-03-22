@@ -115,6 +115,13 @@ DataShipUnitManager.Instance().GetDataListByID(21849).ForEach(data => { data.InG
     - 4: 初始部件（例如变色装置）
     - 5: 无法获取（例如21点控制器）
 - Pros: 哪些飞船能获得这个部件
+    - 7: 护盾号
+    - 77: 空间号
+    - 88: 多彩号
+    - \<ID\>: (自己模组的)飞船
+    - \<ModID\>.\<ID\>: (其他模组的)飞船
+    - 大船号，或者中途换船不改变飞船的ID
+    - 遵循[ID命名法](ShipUnit.md#IDNaming)，也可以指定其他mod的内容。
 - PowerSlot: 一个列表，每个元素代表一个槽位的颜色，0/1/2分别代表白/蓝/橙槽
 - CountOffset: 默认情况下，普通/稀有/传说部件每局游戏只能获得3/2/1次，之后就不再出现在随机奖励中。设置CountOffset为X/-X来增加或减少这个部件的获取上限。（获取上限不会影响出现概率）
 - WeightOffset: 默认情况下，相同稀有度的部件出现在随机奖励中的概率相同。设置WeightOffset为X/-X来让这个部件出现得X%更频繁/更不频繁。

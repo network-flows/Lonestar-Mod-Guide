@@ -21,7 +21,7 @@ Let's begin with the file structure in TutorialMod.
     │       └─Translation.csv
     └─...(Other Files)
 ```          
-Translation files are located in the `Translation` directory. Each subdirectory represents a different language. Lonestar supports two languages: `English` and `ChineseSimplified`, you may also add new languages later on. 
+Translation files are located in the `Translation` directory. Each subdirectory represents a different language. Lonestar supports four languages: `English`, `ChineseSimplified`, `ChineseTraditional` and `Japanese`, you may also add new languages later on. 
 
 Each subdirectory may have one or multiple `.csv` files, each implementing part of the translations for the corresponding language. The name of the `.csv` file has no effect besides helping you distinguish their content.
 
@@ -60,8 +60,8 @@ It's OK if you don't fully implement your language, but it's recommended to do s
 
 ## Modify/Implement existing translations
 
-The steps are quite similar to adding a new language. Add a `.csv` file to `English` or `ChineseSimplified` and write your translation. 
+The steps are quite similar to adding a new language. Add a `.csv` file to one of the directories: `English`, `ChineseSimplified`, `ChineseTraditional` and/or `Japanese`, and implement your translation. 
 
-Note that you may even translate your texts into another different language, even if they only exist in another language mod. As long as `LanguageCommon/<LanguageID>;"<LanguageDisplayName>"` doesn't exist, that language won't appear in the language selection. That means your translation will take effect only if the target language mod is active.
+Note that you may translate your texts into another different language, even if they only exist in another language mod. As long as `LanguageCommon/<LanguageID>;"<LanguageDisplayName>"` doesn't exist, that language won't appear in the language selection. That means your translation will take effect only if the target language mod is active.
 
 Next Chapter: [Units](ShipUnit_EN.md)
