@@ -162,4 +162,8 @@ Add a json file in `ShipData` folder and copy its name to `ShipDataPath` field i
 - alerts: alert turns, similar to moves. Y/N means Alert on/off.
 - controller: if your ship has more complex behaviors, implement in a class inheriting `AIShipController` and set `controller` to class name. (Refer to Order)
 
+## Ship Skill
+
+Like Shield with Shielder or Swap with Spacewalker, each ship can have a skill, its args can be set in `SkillPath` column, `Ship.csv`. You can either use vanilla game ship skills (`SH_Shield`, `SH_Exchange` or `SH_Paint`), or create your own. (See `SH_Tiny.cs` in TutorialMod, and the [Patching Guide](Patch_EN.md)). The args of Ship skill can be changed by events or with other means. (For this part refer to `OC_AddColor.cs` and `OC_AddPoint.cs`.)
+
 Next Chapter: [Editing Code](Patch_EN.md)

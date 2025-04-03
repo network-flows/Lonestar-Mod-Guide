@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Utils;
 using UnityEngine.UIElements;
+using Mods;
 
 namespace Loadout
 {
@@ -944,14 +945,16 @@ namespace Loadout
                             title = tr(de.Name);
                             if (de.Days < 2 || de.Days > 4) rare_text = tr("Loadout/Label/Special");
                             else rare_text = null;
-                            if (DataBountyEventsManager.Instance().GetDataByID(de.ID) != null) type_text = tr("Loadout/Label/CallForSupport");
+                            DataBountyEvents tmp = DataBountyEventsManager.Instance().GetDataByID(de.ID);
+                            bool is_bounty = tmp != null && tmp.ID == de.ID;
+                            if (is_bounty) type_text = tr("Loadout/Label/CallForSupport");
                             else type_text = tr("Loadout/Label/Event");
                             colorform = RareColor.GetColorForm(ColorUtility.ToHtmlStringRGB(RareColor.GetColorByRare(de.Days - 2)), title);
                             tooltip = $"事件:{de.ID}";
                             content = new GUIContent(colorform, tooltip);
                             if (GUILayout.Button(content, GUILayout.Width(width / hCount - 10)))
                             {
-                                if (DataBountyEventsManager.Instance().GetDataByID(de.ID) != null) WantedManager.Instance().wantedProcess.AddBountyEvent(de.ID);
+                                if (is_bounty) WantedManager.Instance().wantedProcess.AddBountyEvent(de.ID);
                                 else EncounterEvent.Event(de.ID);
                             }
                             if (GUI.tooltip == tooltip)

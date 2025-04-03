@@ -177,7 +177,7 @@ Fields exclusive to this item:
     - 10: Modification
     - 11: Fuel
     - 12: Swap
-    - 13: End Vacation (Not used)
+    - 13: Paint
 - RaceSpecial: This option is exclusive to a race.
     - 1: Human
     - 2: Mech

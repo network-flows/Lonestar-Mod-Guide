@@ -162,4 +162,8 @@ json文件大概长这样：
 - alerts: 预警轮次（显示在耐久度左侧的红色感叹号标志），跟上面类似。Y/N表示预警开启/关闭。
 - controller: 如果你的飞船拥有其他复杂行为，只需要继承`AIShipController`类然后把类名写到`controller`里面。具体写法可以参考秩序号的AI。
 
+## 飞船技能
+
+类似护盾之于护盾号，换位之于空间号，每个飞船都可以设置一项技能。技能的参数可以在`Ship.csv`中设置`SkillPath`。你可以使用原版飞船的技能（`SH_Shield`，`SH_Exchange`和`SH_Paint`），也可以自己制作新的技能。飞船技能的写法可以参考`SH_Tiny.cs`。（在此之前请先阅读[补丁教程](Patch.md)）。飞船技能的强度可以通过事件等改变，此方面的机制请参考`OC_AddColor.cs`和`OC_AddPoint.cs`
+
 下一节：[修改代码](Patch.md)

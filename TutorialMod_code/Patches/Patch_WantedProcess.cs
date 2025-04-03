@@ -44,6 +44,8 @@ namespace TutorialMod
             ItemTreasure itemtreasure = new ItemTreasure(dataTreasure);
             if (exactMethod != null) exactMethod.Invoke(__instance, new System.Object[] { itemtreasure });
             */
+
+            Debug.Log("Hi I'm here!");
         }
     }
 }

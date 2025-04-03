@@ -16,3 +16,6 @@ Gamble2L,Gamble,EventName/1890,,,,,,,EventDes/1898,(Left second round),,,,EvenOp
 Gamble3W,Gamble,EventName/1890,,,,,,,EventDes/1899,(Won third round),,,,EvenOptionDes/Close,(Leave),OC_SetBountyFinished,,,,,,,,,,,,,,,
 Gamble3F,Gamble,EventName/1890,,,,,,1,EventDes/1897,(Failed third round),,,,EvenOptionDes/Close,(Leave),OC_SetBountyFinished,,,,,,,,,,,,,,,
 Gamble3L,Gamble,EventName/1890,,,,,,,EventDes/1898,(Left third round),,,,EvenOptionDes/Close,(Leave),OC_SetBountyFinished,,,,,,,,,,,,,,,
+ModShip,ModShip,@/EventName/ModShip,,0,0,,;Tiny;;;,,@/EventDes/ModShip,,;1;;;,,,@/EventOptionDes/A,(+point),@.OC_AddPoint,,,,,,,,,,,,,,,
+ModShip,ModShip,@/EventName/ModShip,,,,,,,@/EventDes/ModShip,,,,,@/EventOptionDes/B,(+color),@.OC_AddColor,,,,,,,,,,,,,,,
+ModShip,ModShip,@/EventName/ModShip,,,,,,,@/EventDes/ModShip,,,,,@/EventOptionDes/C,(ignore),OC_Close,,,,,,,,,,,,,,,
