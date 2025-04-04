@@ -28,7 +28,7 @@ Make a `lib` folder in project directory (It should be in the same folder as the
 - UnityEngine.dll
 - UnityEngine.UIModule.dll
 
-Build the project and it should proceed successfully now. Target dll can be found at `bin/Release/TutorialMod.dll`.
+Build the project and it should proceed successfully now. Build (Ctrl+B) the project and target dll can be found at `bin/Release/TutorialMod.dll`.
 
 ### Other dependencies
 

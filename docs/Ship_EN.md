@@ -166,4 +166,13 @@ Add a json file in `ShipData` folder and copy its name to `ShipDataPath` field i
 
 Like Shield with Shielder or Swap with Spacewalker, each ship can have a skill, its args can be set in `SkillPath` column, `Ship.csv`. You can either use vanilla game ship skills (`SH_Shield`, `SH_Exchange` or `SH_Paint`), or create your own. (See `SH_Tiny.cs` in TutorialMod, and the [Patching Guide](Patch_EN.md)). The args of Ship skill can be changed by events or with other means. (For this part refer to `OC_AddColor.cs` and `OC_AddPoint.cs`.)
 
+## Item Migration/Compatibility Issues
+
+By default, vanilla game content are **NOT** compatible with modded ships, which means these ships have empty unit pool, treasure pool, etc. This will result in Unit rewards and after-battle vacations missing. To make everything work again, you can write your own item pool (units, treasures, pilots, a lot of work)...or you may want to migrate vanilla game content (or even content from other mod) to your ship. The migration code see `MigrateItems` function in `TutorialMod.cs` (Please read the [Patching Guide](Patch_EN.md) first)
+
+A few things to note:
+- The migration should happen after all mods are loaded, to prevent load order issues.
+- When migrating, you can write filters to make only a part of items compatible with your ship (Eg, give it shielder unit pool only). 
+- Migration is not mandatory, as you can fill your ship pool with your own items.
+
 Next Chapter: [Editing Code](Patch_EN.md)

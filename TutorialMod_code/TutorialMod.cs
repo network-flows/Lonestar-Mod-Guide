@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Mods;
+using System.Collections.Generic;
 using System.Linq;
 using Tool.Database;
 
@@ -35,11 +36,16 @@ namespace TutorialMod
         {
             base.OnLoad();
             UnityEngine.Debug.Log("Successfully Loaded [" + this.modID + "] at " + this.path);
+        }
+
+        public override void OnAllModsLoad(IReadOnlyList<UserMod> mods)
+        {
+            base.OnAllModsLoad(mods);
             MigrateItems();
         }
 
-        // Migrate vanilla events, treasures, pilots, etc to the ship "Tiny", give it shielder unit pool
-        // You can write your filters
+        // Migrate events, treasures, pilots, etc to the ship "Tiny", give it vanilla game shielder unit pool
+        // You can write your filters, (eg, whether or not include items from other mod, etc)
         // If you have an own set of events or treasures, it's alright not to migrate
         public void MigrateItems()
         {
@@ -82,7 +88,7 @@ namespace TutorialMod
 
             foreach (var u in DataShipUnitManager.Instance().GetDataList())
             {
-                if (u.Pros.Contains(7)) // shielder unit pool
+                if (u.Pros.Contains(7) && !ModUtils.WasModID(u.ID)) // shielder unit pool, units from other mods excluded
                 {
                     u.Pros = u.Pros.Append(shipID).ToArray();
                 }

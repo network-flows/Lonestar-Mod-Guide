@@ -28,7 +28,7 @@
 - UnityEngine.UI.dll
 - UnityEngine.UIModule.dll
 
-构建项目，现在应该能成功编译了。编译出来的dll位于`bin/Release/TutorialMod.dll`目录下。
+构建项目，现在应该能成功编译（Ctrl+B）了。编译出来的dll位于`bin/Release/TutorialMod.dll`目录下。
 
 ### 其他引用
 如果你需要其他dll文件或引用第三方库：右键点击解决方案浏览器视图中的"引用"，选择"添加引用"。如果没有解决方案浏览器，在顶部菜单栏的视图选项里面找到解决方案浏览器并打开。
