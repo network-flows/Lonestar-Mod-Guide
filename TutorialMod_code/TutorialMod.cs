@@ -55,7 +55,8 @@ namespace TutorialMod
             {
                 if (!ev.Tags.Contains((int)EncounterEventTag.Shield) &&
                     !ev.Tags.Contains((int)EncounterEventTag.Exchange) &&
-                    !ev.Tags.Contains((int)EncounterEventTag.ColorSlot))
+                    !ev.Tags.Contains((int)EncounterEventTag.ColorSlot) &&
+                    ev.Pros.Length > 0)
                 {
                     ev.Pros = ev.Pros.Append(shipID).ToArray();
                 }
