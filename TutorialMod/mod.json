@@ -1,7 +1,7 @@
 {
     "modID" : "TutorialMod",
     "displayName" : "Tutorial Mod",
-    "description" : "Template and Tutorial Mod for LoneStar",
+    "description" : "Template and Tutorial Mod for LoneStar.\nTo learn more, please visit our modding guide at https://github.com/network-flows/Lonestar-Mod-Guide",
     "version" : "1.0.2",
     "author" : "pip"
 }

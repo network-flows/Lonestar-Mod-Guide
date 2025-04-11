@@ -17,7 +17,7 @@ namespace Loadout
     public class GUILoadout : SingletonAutoMono<GUILoadout>
     {
         private List<string> titles_outgame = new List<string> { "Loadout/Keys/Association" };
-        private List<string> titles_ingame = new List<string> { "Loadout/Keys/Ship", "Loadout/Keys/Enemy", "Loadout/Keys/ShipUnit", "Loadout/Keys/Treasure", "Loadout/Keys/Talent", "Loadout/Keys/Events", "Loadout/Keys/Mod" };
+        private List<string> titles_ingame = new List<string> { "Loadout/Keys/Ship", "Loadout/Keys/Enemy2", "Loadout/Keys/ShipUnit", "Loadout/Keys/Treasure", "Loadout/Keys/Talent", "Loadout/Keys/Events", "Loadout/Keys/Mod" };
         private List<string> titles_battle = new List<string> { "Loadout/Keys/Ship", "Loadout/Keys/Enemy" };
         private List<string> options_pool = new List<string> { "Loadout/Operation/Normal", "Loadout/Operation/PoolAdd", "Loadout/Operation/PoolRemove" };
         private List<string> filter_ship;
@@ -259,6 +259,7 @@ namespace Loadout
 
                     enemy_ships.Add(-d.ID);
                 }
+                GUILayout.Label(tr("Loadout/Text/SetEnemy"));
                 Make_Grid(4, enemy_ships);
             }
             else
@@ -426,7 +427,11 @@ namespace Loadout
                     ItemManager.Instance().RemoveAllItems();
                 }
                 GUILayout.EndHorizontal();
-                for (int i = 0; i < UnitData.GetPlayerUnits().Count; i++) shipunits.Add(i);
+                for (int i = 0; i < UnitData.GetPlayerUnits().Count; i++) shipunits.Add(i + 1);
+                for (int i = UnitData.GetPlayerUnits().Count; i % H_COUNT != 0; i++) shipunits.Add(0);
+                shipunits.Add(-1);
+                for (int i = 0; i < ItemManager.Instance().treasures.Count; i++) shipunits.Add(-i-2);
+                GUILayout.Label(tr("Loadout/Text/ModUnit"));
                 Make_Grid(5, shipunits);
             }
         }
@@ -603,7 +608,7 @@ namespace Loadout
             int i_old, i_new;
             string s_old, s_new;
             bool pressed;
-
+            GUILayout.Label(tr("Loadout/Text/PressEnter"));
             foreach (string key in keys)
             {
                 GUILayout.BeginHorizontal();
@@ -1045,6 +1050,9 @@ namespace Loadout
                                 }
                                 else
                                 {
+                                    GUILayout.EndHorizontal();
+                                    GUILayout.Label(tr("Loadout/Text/SetBattleEvent"));
+                                    GUILayout.BeginHorizontal();
                                     title = tr("Loadout/Label/NoEvent");
                                     if (cur_id == -1) title += "(√)";
                                     if (GUILayout.Button(title, GUILayout.Width(width / hCount - 10)))
@@ -1053,27 +1061,59 @@ namespace Loadout
                             }
                             break;
                         case 5:
-                            UnitData d2 = UnitData.GetPlayerUnits()[lid[i]];
-                            title = tr(d2.GetData().Name);
-                            colorform = RareColor.GetColorForm(ColorUtility.ToHtmlStringRGB(RareColor.GetColorByRare(d2.GetData().Rare)), title);
-                            tooltip = $"改造:{i}-{d2.GetData().ID}";
-                            content = new GUIContent(colorform, tooltip);
-                            if (GUILayout.Button(content, GUILayout.Width(width / hCount - 10)))
+                            if (lid[i] > 0)
                             {
-                                selected = d2;
-                            }
-                            if (GUI.tooltip == tooltip)
-                            {
-                                new_tooltip = tooltip;
-                                items[0] = new ItemUnit(d2);
-                                DataShipUnit dtmp = d2.GetData();
-                                if (old_tooltip != tooltip) devInfo = new DevInfo
+                                UnitData d2 = UnitData.GetPlayerUnits()[lid[i] - 1];
+                                title = tr(d2.GetData().Name);
+                                colorform = RareColor.GetColorForm(ColorUtility.ToHtmlStringRGB(RareColor.GetColorByRare(d2.GetData().Rare)), title);
+                                tooltip = $"改造:{i}-{d2.GetData().ID}";
+                                content = new GUIContent(colorform, tooltip);
+                                if (GUILayout.Button(content, GUILayout.Width(width / hCount - 10)))
                                 {
-                                    itemID = dtmp.modID == null ? dtmp.ID.ToString() : $"{dtmp.modID}.{dtmp.nameInMod}",
-                                    skillName = FilePath.GetNameWithPath(dtmp.SkillPath),
-                                    imageName = dtmp.SpritePath,
-                                    animationName = dtmp.ModPath,
-                                };
+                                    selected = d2;
+                                }
+                                if (GUI.tooltip == tooltip)
+                                {
+                                    new_tooltip = tooltip;
+                                    items[0] = new ItemUnit(d2);
+                                    DataShipUnit dtmp = d2.GetData();
+                                    if (old_tooltip != tooltip) devInfo = new DevInfo
+                                    {
+                                        itemID = dtmp.modID == null ? dtmp.ID.ToString() : $"{dtmp.modID}.{dtmp.nameInMod}",
+                                        skillName = FilePath.GetNameWithPath(dtmp.SkillPath),
+                                        imageName = dtmp.SpritePath,
+                                        animationName = dtmp.ModPath,
+                                    };
+                                }
+                            }
+                            else if (lid[i] < -1)
+                            {
+                                ItemTreasure treasure = ItemManager.Instance().treasures[-lid[i] - 2];
+                                title = tr(treasure.dataTreasure.Name);
+                                colorform = RareColor.GetColorForm(ColorUtility.ToHtmlStringRGB(RareColor.GetColorByRare(treasure.dataTreasure.Rare)), title);
+                                tooltip = $"移除宝物:{i}-{treasure.dataTreasure.ID}";
+                                content = new GUIContent(colorform, tooltip);
+                                if (GUILayout.Button(content, GUILayout.Width(width / hCount - 10)))
+                                {
+                                    ItemManager.Instance().RemoveTreasure(treasure);
+                                }
+                                if (GUI.tooltip == tooltip)
+                                {
+                                    new_tooltip = tooltip;
+                                    items[0] = new ItemTreasure(treasure.dataTreasure);
+                                    if (old_tooltip != tooltip) devInfo = new DevInfo
+                                    {
+                                        itemID = treasure.dataTreasure.modID == null ? treasure.dataTreasure.ID.ToString() : $"{treasure.dataTreasure.modID}.{treasure.dataTreasure.nameInMod}",
+                                        skillName = FilePath.GetNameWithPath(treasure.dataTreasure.SkillPath),
+                                        imageName = treasure.dataTreasure.SpritePath,
+                                    };
+                                }
+                            }
+                            else if (lid[i] == -1)
+                            {
+                                GUILayout.EndHorizontal();
+                                GUILayout.Label(tr("Loadout/Text/RemoveTreasure"));
+                                GUILayout.BeginHorizontal();
                             }
                             break;
                         default:
